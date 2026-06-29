@@ -11,15 +11,15 @@
   /* Тёмная оливковая тема: фон — олива/шалфей, текст — крем (как на карточках).
      cream остаётся «светлым» (текст/светлые штрихи), olive/olive-deep — тёмные
      поверхности, ink/muted/sage перекрашены в светлые для тёмного фона. */
-  --cream: #e0dace;
-  --cream-2: #515845;
-  --greige: #6a7158;
-  --line: #7a816a;
-  --ink: #e4ded2;
-  --muted: #c2c6b3;
-  --olive: #666d55;
-  --olive-deep: #444b3a;
-  --sage: #b4b9a3;
+  --cream: #ddd8cc;
+  --cream-2: #5f6657;
+  --greige: #6a7160;
+  --line: #79806e;
+  --ink: #e2ddd2;
+  --muted: #c0c4b3;
+  --olive: #656c59;
+  --olive-deep: #575e4f;
+  --sage: #b1b6a1;
   --gold: #c8a96a;
   --gold-soft: #dcc190;
 
@@ -120,21 +120,36 @@
       0 0 26px 7px color-mix(in srgb, var(--gold-soft) 38%, transparent),
       0 0 48px 15px color-mix(in srgb, var(--gold-soft) 20%, transparent);
     opacity: 0.16;
-    transition: opacity 0.5s ease;
+    /* лента тихо «тлеет» — как включённая, но приглушённая подсветка */
+    animation: led-idle 6s ease-in-out infinite;
+    transition: opacity 0.5s ease, filter 0.5s ease;
     pointer-events: none;
-    will-change: opacity;
+    will-change: opacity, filter;
   }
   .btn-glow:hover::before {
+    animation: none;
     opacity: 0.5;
   }
   .btn-glow:focus-visible::before {
+    animation: none;
     opacity: 0.85;
   }
-  /* нажатие — мгновенное «включение» ленты на полную */
+  /* нажатие — лента резко «вспыхивает» и остаётся гореть, как включили свет */
   .btn-glow:active::before {
+    animation: led-ignite 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     opacity: 1;
-    transition-duration: 0.06s;
   }
+}
+
+@keyframes led-idle {
+  0%, 100% { opacity: 0.12; }
+  50% { opacity: 0.22; }
+}
+
+@keyframes led-ignite {
+  0% { opacity: 0.5; filter: brightness(1); }
+  16% { opacity: 1; filter: brightness(1.35); }
+  100% { opacity: 1; filter: brightness(1); }
 }
 
 @keyframes marquee {

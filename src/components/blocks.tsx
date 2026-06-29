@@ -53,7 +53,7 @@ export function ServiceCard({ service }: { service: Service }) {
   return (
     <Link
       href={`/uslugi/${service.slug}`}
-      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-cream/[0.05] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-olive/30 hover:bg-cream/10 hover:shadow-[0_18px_40px_-22px_rgba(61,66,51,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olive/40"
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-cream/[0.05] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-olive/30 hover:bg-cream/10 hover:shadow-[0_18px_40px_-22px_rgba(61,66,51,0.5),0_0_30px_-4px_rgba(220,193,144,0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olive/40"
     >
       <div className="overflow-hidden">
         <Placeholder
@@ -82,7 +82,7 @@ export function ServiceCard({ service }: { service: Service }) {
 
 export function MasterCard({ master }: { master: Master }) {
   return (
-    <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-cream/[0.05] transition-all duration-500 hover:-translate-y-1 hover:bg-cream/10 hover:shadow-[0_18px_40px_-22px_rgba(61,66,51,0.5)]">
+    <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-cream/[0.05] transition-all duration-500 hover:-translate-y-1 hover:bg-cream/10 hover:shadow-[0_18px_40px_-22px_rgba(61,66,51,0.5),0_0_30px_-4px_rgba(220,193,144,0.22)]">
       <div className="overflow-hidden">
         <Placeholder
           label={master.photo}
@@ -104,7 +104,7 @@ export function MasterCard({ master }: { master: Master }) {
 
 export function ReviewCard({ review }: { review: Review }) {
   return (
-    <figure className="relative flex h-full flex-col rounded-2xl border border-line bg-cream/[0.05] p-6 transition-all duration-500 hover:bg-cream/10 hover:shadow-[0_18px_40px_-22px_rgba(61,66,51,0.5)]">
+    <figure className="relative flex h-full flex-col rounded-2xl border border-line bg-cream/[0.05] p-6 transition-all duration-500 hover:bg-cream/10 hover:shadow-[0_18px_40px_-22px_rgba(61,66,51,0.5),0_0_30px_-4px_rgba(220,193,144,0.22)]">
       <span
         aria-hidden="true"
         className="pointer-events-none absolute right-5 top-2 font-display text-6xl leading-none text-cream/10"
@@ -132,7 +132,7 @@ export function ReviewCard({ review }: { review: Review }) {
 
 export function PortfolioCard({ item }: { item: PortfolioItem }) {
   return (
-    <figure className="group overflow-hidden rounded-2xl border border-line bg-cream/[0.05] transition-all duration-500 hover:-translate-y-1 hover:bg-cream/10 hover:shadow-[0_18px_40px_-22px_rgba(61,66,51,0.5)]">
+    <figure className="group overflow-hidden rounded-2xl border border-line bg-cream/[0.05] transition-all duration-500 hover:-translate-y-1 hover:bg-cream/10 hover:shadow-[0_18px_40px_-22px_rgba(61,66,51,0.5),0_0_30px_-4px_rgba(220,193,144,0.22)]">
       <div className="grid grid-cols-2 gap-px bg-line">
         <div className="relative overflow-hidden">
           <Placeholder
