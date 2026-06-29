@@ -9,13 +9,13 @@ export function Marquee({ items }: { items: string[] }) {
       className="group relative flex overflow-hidden border-y border-olive/15 py-5"
       aria-hidden="true"
     >
-      <div className="flex shrink-0 animate-[marquee_38s_linear_infinite] items-center gap-0 group-hover:[animation-play-state:paused] motion-reduce:animate-none">
+      <div className="flex shrink-0 animate-[marquee_46s_linear_infinite] items-center gap-0 group-hover:[animation-play-state:paused] motion-reduce:animate-none">
         {row.map((item, i) => (
           <Fragment key={i}>
-            <span className="px-8 font-display text-2xl italic text-olive/70 sm:text-3xl">
+            <span className="whitespace-nowrap px-7 text-sm font-light uppercase tracking-[0.32em] text-olive/65 sm:text-base">
               {item}
             </span>
-            <span className="text-gold">✦</span>
+            <span className="h-1 w-1 shrink-0 rounded-full bg-gold/70" />
           </Fragment>
         ))}
       </div>

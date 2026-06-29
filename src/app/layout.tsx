@@ -1,20 +1,22 @@
 import type { Metadata } from "next";
-import { Manrope, Cormorant_Garamond } from "next/font/google";
+import { Montserrat, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { siteConfig } from "@/content/site";
 
-const manrope = Manrope({
+const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
-  variable: "--font-manrope",
+  weight: ["200", "300", "400", "500", "600", "700"],
+  variable: "--font-montserrat",
   display: "swap",
 });
 
 const cormorant = Cormorant_Garamond({
-  subsets: ["latin", "cyrillic"],
-  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["italic", "normal"],
   variable: "--font-cormorant",
   display: "swap",
 });
@@ -34,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" className={`${manrope.variable} ${cormorant.variable}`}>
+    <html lang="ru" className={`${montserrat.variable} ${cormorant.variable}`}>
       <body className="relative z-[1] flex min-h-screen flex-col bg-cream font-sans text-ink antialiased">
         <a
           href="#main"

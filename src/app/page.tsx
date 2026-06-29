@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/Container";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { ButtonLink } from "@/components/ui/Button";
 import { Placeholder } from "@/components/ui/Placeholder";
+import { Monogram } from "@/components/ui/Logo";
 import { Reveal, Stagger, RevealItem } from "@/components/ui/Reveal";
 import { Counter } from "@/components/ui/Counter";
 import { Marquee } from "@/components/ui/Marquee";
@@ -62,8 +63,6 @@ export default function HomePage() {
     <>
       {/* 1. Hero */}
       <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute -left-32 top-10 h-96 w-96 rounded-full bg-olive/5 blur-3xl" />
-        <div className="pointer-events-none absolute -right-24 top-1/3 h-80 w-80 rounded-full bg-gold/10 blur-3xl" />
         <Container className="grid items-center gap-12 py-14 sm:py-20 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <Reveal direction="up">
@@ -72,11 +71,13 @@ export default function HomePage() {
               </p>
             </Reveal>
             <Reveal delay={0.08}>
-              <h1 className="mt-5 text-[2.7rem] font-medium leading-[1.02] text-ink sm:text-6xl lg:text-[4.2rem]">
+              <h1 className="mt-5 text-[2.6rem] font-light leading-[1.05] tracking-[-0.01em] text-ink sm:text-6xl lg:text-[4rem]">
                 Волосы, которые
                 <br />
-                выглядят
-                <span className="italic text-olive"> как ваши собственные</span>
+                выглядят{" "}
+                <span className="font-semibold text-olive">как ваши</span>
+                <br className="hidden sm:block" />
+                <span className="font-semibold text-olive"> собственные</span>
               </h1>
             </Reveal>
             <Reveal delay={0.16}>
@@ -116,16 +117,14 @@ export default function HomePage() {
                 className="rounded-[999px_999px_1.5rem_1.5rem]"
               />
               {/* плавающий золотой бейдж-монограмма */}
-              <div className="animate-float absolute -left-4 bottom-10 flex h-24 w-24 flex-col items-center justify-center rounded-full bg-olive text-cream shadow-[0_20px_40px_-16px_rgba(61,66,51,0.7)] sm:-left-8">
-                <span className="font-display text-2xl font-semibold leading-none">
-                  L<span className="italic">A</span>
-                </span>
-                <span className="mt-1 text-[8px] uppercase tracking-[0.2em] text-cream/70">
+              <div className="animate-float absolute -left-4 bottom-10 flex h-24 w-24 flex-col items-center justify-center gap-1 rounded-full bg-olive text-cream shadow-[0_18px_36px_-18px_rgba(61,66,51,0.65)] sm:-left-8">
+                <Monogram className="h-8 w-auto text-cream" />
+                <span className="text-[8px] uppercase tracking-[0.24em] text-cream/70">
                   hair
                 </span>
               </div>
               <div className="absolute -right-3 top-8 rounded-2xl border border-line bg-cream/90 px-4 py-3 text-center shadow-sm backdrop-blur sm:-right-6">
-                <p className="font-display text-2xl font-semibold text-olive">
+                <p className="text-2xl font-semibold text-olive">
                   {siteConfig.rating.value}
                 </p>
                 <p className="text-[10px] uppercase tracking-[0.16em] text-sage">
@@ -148,10 +147,10 @@ export default function HomePage() {
           <Stagger className="grid grid-cols-2 gap-6 sm:grid-cols-4">
             {stats.map((stat) => (
               <RevealItem key={stat.label} className="text-center">
-                <p className="font-display text-4xl font-medium text-olive sm:text-5xl">
+                <p className="text-4xl font-light text-olive sm:text-5xl">
                   <Counter to={stat.value} decimals={stat.decimals} suffix={stat.suffix} />
                 </p>
-                <p className="mt-2 text-xs uppercase tracking-[0.16em] text-muted">
+                <p className="mt-2 text-[11px] font-light uppercase tracking-[0.24em] text-muted">
                   {stat.label}
                 </p>
               </RevealItem>
@@ -266,10 +265,10 @@ export default function HomePage() {
       {/* 9. CTA + адрес */}
       <Section>
         <div className="relative grid items-center gap-8 overflow-hidden rounded-3xl bg-olive p-8 text-cream sm:p-14 lg:grid-cols-2">
-          <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-gold/15 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-cream/5 blur-3xl" />
+          <div className="pointer-events-none absolute -right-24 -top-24 aspect-square w-96 rounded-full border border-cream/10" />
+          <div className="pointer-events-none absolute -right-8 -top-8 aspect-square w-72 rounded-full border border-cream/10" />
           <div className="relative">
-            <p className="text-xs font-medium uppercase tracking-[0.22em] text-cream/60">
+            <p className="text-[11px] font-light uppercase tracking-[0.34em] text-cream/55">
               Запись
             </p>
             <h2 className="mt-3 text-3xl font-medium leading-tight sm:text-4xl">

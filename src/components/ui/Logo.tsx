@@ -1,12 +1,25 @@
+/* Фирменная монограмма «LA» — тонкие линии, перекрытие L и A, как в оригинале.
+   Рисуется в currentColor, поэтому цвет задаётся через text-* родителя. */
 export function Monogram({ className = "" }: { className?: string }) {
   return (
-    <span
-      aria-hidden="true"
-      className={`font-display leading-none tracking-tight ${className}`}
+    <svg
+      viewBox="0 0 132 150"
+      role="img"
+      aria-label="LA"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={3.2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
-      <span className="font-semibold">L</span>
-      <span className="font-semibold italic">A</span>
-    </span>
+      {/* L */}
+      <path d="M30 24 V113 H72" />
+      {/* A — две диагонали от вершины */}
+      <path d="M50 122 L88 30 L114 122" />
+      {/* низкая перекладина A */}
+      <path d="M63 98 H101" />
+    </svg>
   );
 }
 
@@ -17,20 +30,18 @@ export function Wordmark({
   className?: string;
   tone?: "ink" | "cream";
 }) {
-  const color = tone === "cream" ? "text-cream" : "text-ink";
+  const mark = tone === "cream" ? "text-cream" : "text-ink";
+  const script = tone === "cream" ? "text-cream" : "text-ink";
   const sub = tone === "cream" ? "text-cream/55" : "text-sage";
   return (
-    <span className={`flex items-center gap-2.5 leading-none ${className}`}>
-      <span
-        aria-hidden="true"
-        className={`font-display text-2xl font-semibold tracking-tight ${color}`}
-      >
-        L<span className="italic">A</span>
-      </span>
+    <span className={`flex items-center gap-3 leading-none ${className}`}>
+      <Monogram className={`h-9 w-auto ${mark}`} />
       <span className="flex flex-col leading-none">
-        <span className={`font-display text-lg italic ${color}`}>hair</span>
+        <span className={`font-script text-[1.45rem] leading-none ${script}`}>
+          hair
+        </span>
         <span
-          className={`mt-0.5 text-[9px] font-medium uppercase tracking-[0.28em] ${sub}`}
+          className={`mt-1 text-[9px] font-light uppercase tracking-[0.3em] ${sub}`}
         >
           Alena Lukina
         </span>

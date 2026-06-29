@@ -17,14 +17,15 @@ export function PageHero({
 }) {
   return (
     <div className="relative overflow-hidden border-b border-line bg-olive text-cream">
-      <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-gold/15 blur-3xl" />
-      <div className="pointer-events-none absolute -left-20 bottom-0 h-72 w-72 rounded-full bg-cream/5 blur-3xl" />
+      {/* фирменный мотив — тонкие концентрические круги, как портрет-виньетка */}
+      <div className="pointer-events-none absolute -right-28 -top-28 aspect-square w-[26rem] rounded-full border border-cream/10" />
+      <div className="pointer-events-none absolute -right-14 -top-14 aspect-square w-[20rem] rounded-full border border-cream/10" />
       <Container className="relative py-16 sm:py-20">
         <Reveal>
-          <p className="mb-3 text-xs font-medium uppercase tracking-[0.22em] text-cream/60">
+          <p className="mb-4 text-[11px] font-light uppercase tracking-[0.34em] text-cream/55">
             {eyebrow ?? siteConfig.name}
           </p>
-          <h1 className="text-4xl font-medium leading-[1.04] sm:text-6xl">{title}</h1>
+          <h1 className="text-4xl font-light leading-[1.05] tracking-[-0.01em] sm:text-6xl">{title}</h1>
           {subtitle ? (
             <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-cream/75">
               {subtitle}

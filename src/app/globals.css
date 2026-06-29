@@ -3,7 +3,9 @@
 /* ── Бренд Alena Lukina hair ───────────────────────────────────────────
    Палитра снята с фирменного оформления: оливково-шалфейный, тёплый
    греж/крем, приглушённое золото-латунь интерьера, мягкий серо-зелёный
-   текст. Типографика: изящный serif (Cormorant) + чистый гротеск (Manrope). */
+   текст. Типографика фирменная: геометрический гротеск Montserrat
+   (тонкий с разрядкой + жирный для акцентов), курсивный serif Cormorant
+   только для скрипт-слова «hair» в логотипе. */
 
 :root {
   --cream: #f5f1e9;
@@ -38,8 +40,9 @@
   --color-gold: var(--gold);
   --color-gold-soft: var(--gold-soft);
 
-  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-cormorant), ui-serif, Georgia, serif;
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-script: var(--font-cormorant), ui-serif, Georgia, serif;
 
   --radius: 0.5rem;
 }
@@ -48,11 +51,11 @@
   body {
     background: var(--cream);
     color: var(--ink);
-    font-feature-settings: "ss01", "cv11";
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
     letter-spacing: -0.01em;
+    font-weight: 500;
   }
   ::selection {
     background: color-mix(in srgb, var(--gold) 35%, transparent);
@@ -82,9 +85,15 @@
     @apply origin-left scale-x-100;
   }
 
-  /* мягкое «дыхание» декоративного круга в hero */
+  /* фирменная подпись: тонкий гротеск с широкой разрядкой (как «Alena Lukina») */
   .eyebrow {
-    @apply text-xs font-medium uppercase tracking-[0.22em] text-sage;
+    @apply text-[11px] font-light uppercase tracking-[0.34em] text-sage;
+  }
+
+  /* курсивный serif только для скрипт-слова «hair» */
+  .font-script {
+    font-family: var(--font-script);
+    font-style: italic;
   }
 }
 
