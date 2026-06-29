@@ -2,8 +2,8 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { ButtonLink } from "@/components/ui/Button";
-import { Placeholder } from "@/components/ui/Placeholder";
-import { Monogram } from "@/components/ui/Logo";
+import { Magnetic } from "@/components/ui/Magnetic";
+import { HeroVisual } from "@/components/HeroVisual";
 import { Reveal, Stagger, RevealItem } from "@/components/ui/Reveal";
 import { Counter } from "@/components/ui/Counter";
 import { Marquee } from "@/components/ui/Marquee";
@@ -89,10 +89,14 @@ export default function HomePage() {
             </Reveal>
             <Reveal delay={0.24}>
               <div className="mt-9 flex flex-wrap items-center gap-4">
-                <ButtonLink href="/zapis">Записаться онлайн</ButtonLink>
-                <ButtonLink href="/portfolio" variant="secondary">
-                  Смотреть работы
-                </ButtonLink>
+                <Magnetic>
+                  <ButtonLink href="/zapis">Записаться онлайн</ButtonLink>
+                </Magnetic>
+                <Magnetic>
+                  <ButtonLink href="/portfolio" variant="secondary">
+                    Смотреть работы
+                  </ButtonLink>
+                </Magnetic>
               </div>
             </Reveal>
             <Reveal delay={0.32}>
@@ -109,29 +113,7 @@ export default function HomePage() {
           </div>
 
           <Reveal delay={0.15} direction="left">
-            <div className="relative mx-auto max-w-md">
-              {/* арочное главное фото — отсылка к зеркалам в интерьере */}
-              <Placeholder
-                label="Интерьер салона"
-                ratio="aspect-[4/5]"
-                className="rounded-[999px_999px_1.5rem_1.5rem]"
-              />
-              {/* плавающий золотой бейдж-монограмма */}
-              <div className="animate-float absolute -left-4 bottom-10 flex h-24 w-24 flex-col items-center justify-center gap-1 rounded-full bg-olive text-cream shadow-[0_18px_36px_-18px_rgba(61,66,51,0.65)] sm:-left-8">
-                <Monogram className="h-8 w-auto text-cream" />
-                <span className="text-[8px] uppercase tracking-[0.24em] text-cream/70">
-                  hair
-                </span>
-              </div>
-              <div className="absolute -right-3 top-8 rounded-2xl border border-line bg-cream/90 px-4 py-3 text-center shadow-sm backdrop-blur sm:-right-6">
-                <p className="text-2xl font-semibold text-olive">
-                  {siteConfig.rating.value}
-                </p>
-                <p className="text-[10px] uppercase tracking-[0.16em] text-olive/60">
-                  рейтинг
-                </p>
-              </div>
-            </div>
+            <HeroVisual />
           </Reveal>
         </Container>
       </section>
@@ -278,9 +260,11 @@ export default function HomePage() {
               Подберём технику наращивания и рассчитаем стоимость под ваши волосы.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <ButtonLink href="/zapis" variant="gold">
-                Записаться
-              </ButtonLink>
+              <Magnetic>
+                <ButtonLink href="/zapis" variant="gold">
+                  Записаться
+                </ButtonLink>
+              </Magnetic>
               <Link
                 href="/kontakty"
                 className="link-underline inline-flex items-center text-sm font-medium text-cream"

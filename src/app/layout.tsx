@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { siteConfig } from "@/content/site";
 
 const montserrat = Montserrat({
@@ -44,6 +45,7 @@ export default function RootLayout({
         >
           К основному содержанию
         </a>
+        <ScrollProgress />
         <Header />
         <main id="main" className="relative z-[1] flex-1">
           {children}

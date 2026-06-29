@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Container } from "./Container";
 import { Reveal } from "./Reveal";
+import { TextReveal } from "./TextReveal";
 
 export function Section({
   children,
@@ -35,7 +36,7 @@ export function SectionHeading({
     <div className={`mb-10 ${align === "center" ? "mx-auto max-w-2xl text-center" : ""}`}>
       {eyebrow ? <p className="eyebrow mb-3">{eyebrow}</p> : null}
       <h2 className="text-3xl font-medium leading-[1.05] text-ink sm:text-[2.6rem]">
-        {title}
+        <TextReveal text={title} />
       </h2>
       {subtitle ? (
         <p
