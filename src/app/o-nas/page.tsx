@@ -20,13 +20,13 @@ export default function AboutPage() {
       <Section>
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <div>
-            <p className="text-neutral-700">
+            <p className="text-ink/80">
               Салон «{siteConfig.name}» специализируется на наращивании волос:
               капсульные, невидимые и ленточные техники с использованием натуральных
               волос. Помимо наращивания мы предлагаем уход, окрашивание, стрижки и
               причёски — полный цикл работы с вашим образом.
             </p>
-            <p className="mt-4 text-neutral-700">
+            <p className="mt-4 text-ink/80">
               Мы ценим естественный результат и здоровье волос: подбираем технику
               индивидуально и сопровождаем гостя на всех этапах — от консультации до
               коррекции.
@@ -39,13 +39,13 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <Section className="bg-neutral-50">
+      <Section className="bg-cream-2">
         <SectionHeading title="Удобства" />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {siteConfig.amenities.map((item) => (
             <div
               key={item}
-              className="rounded-xl border border-neutral-200 bg-white p-5 text-sm font-medium text-neutral-900"
+              className="rounded-xl border border-line bg-white p-5 text-sm font-medium text-ink"
             >
               {item}
             </div>
@@ -54,13 +54,16 @@ export default function AboutPage() {
       </Section>
 
       <Section>
-        <div className="rounded-2xl border border-neutral-200 bg-neutral-900 p-8 text-center text-white sm:p-12">
-          <h2 className="text-2xl font-semibold">Хотите обсудить свой образ?</h2>
-          <p className="mx-auto mt-3 max-w-xl text-neutral-300">
+        <div className="relative overflow-hidden rounded-3xl bg-olive p-8 text-center text-cream sm:p-14">
+          <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-gold/15 blur-3xl" />
+          <h2 className="relative text-3xl font-medium sm:text-4xl">
+            Хотите обсудить свой образ?
+          </h2>
+          <p className="relative mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-cream/75">
             Запишитесь на консультацию — подберём технику и материалы под ваши волосы.
           </p>
-          <div className="mt-6 flex justify-center">
-            <ButtonLink href="/zapis" variant="secondary">
+          <div className="relative mt-8 flex justify-center">
+            <ButtonLink href="/zapis" variant="gold">
               Записаться
             </ButtonLink>
           </div>

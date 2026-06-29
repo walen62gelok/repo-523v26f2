@@ -1,16 +1,18 @@
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 
-type Variant = "primary" | "secondary" | "ghost";
+type Variant = "primary" | "secondary" | "ghost" | "gold";
 
 const base =
-  "inline-flex items-center justify-center rounded-md px-5 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60";
+  "group/btn inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium tracking-wide transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olive/40 focus-visible:ring-offset-2 focus-visible:ring-offset-cream disabled:cursor-not-allowed disabled:opacity-60";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-neutral-900 text-white hover:bg-neutral-700",
+  primary:
+    "bg-olive text-cream shadow-sm hover:bg-olive-deep hover:shadow-md hover:-translate-y-0.5",
   secondary:
-    "border border-neutral-300 bg-white text-neutral-900 hover:bg-neutral-100",
-  ghost: "text-neutral-900 hover:bg-neutral-100",
+    "border border-olive/30 bg-transparent text-ink hover:border-olive hover:bg-olive/5",
+  ghost: "text-ink hover:bg-olive/5",
+  gold: "bg-gold text-white shadow-sm hover:bg-gold/90 hover:-translate-y-0.5",
 };
 
 export function ButtonLink({

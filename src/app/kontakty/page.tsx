@@ -18,38 +18,38 @@ export default function ContactsPage() {
         <div>
           <dl className="space-y-5 text-sm">
             <div>
-              <dt className="text-neutral-500">Адрес</dt>
-              <dd className="mt-1 text-base text-neutral-900">
+              <dt className="text-sage">Адрес</dt>
+              <dd className="mt-1 text-base text-ink">
                 {siteConfig.city}, {siteConfig.address}
               </dd>
             </div>
             <div>
-              <dt className="text-neutral-500">Часы работы</dt>
-              <dd className="mt-1 text-base text-neutral-900">{siteConfig.hours}</dd>
+              <dt className="text-sage">Часы работы</dt>
+              <dd className="mt-1 text-base text-ink">{siteConfig.hours}</dd>
             </div>
             <div>
-              <dt className="text-neutral-500">Телефон</dt>
+              <dt className="text-sage">Телефон</dt>
               <dd className="mt-1 text-base">
-                <a href={siteConfig.phoneHref} className="text-neutral-900 hover:underline">
+                <a href={siteConfig.phoneHref} className="text-ink hover:underline">
                   {siteConfig.phone}
                 </a>
               </dd>
             </div>
             <div>
-              <dt className="text-neutral-500">WhatsApp</dt>
+              <dt className="text-sage">WhatsApp</dt>
               <dd className="mt-1 text-base">
                 <a
                   href={siteConfig.whatsappHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-neutral-900 hover:underline"
+                  className="text-ink hover:underline"
                 >
                   {siteConfig.whatsapp}
                 </a>
               </dd>
             </div>
             <div>
-              <dt className="text-neutral-500">Мы в сети</dt>
+              <dt className="text-sage">Мы в сети</dt>
               <dd className="mt-2 flex flex-wrap gap-2">
                 {siteConfig.social.map((item) => (
                   <a
@@ -57,7 +57,7 @@ export default function ContactsPage() {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="rounded-full border border-neutral-300 bg-white px-3 py-1 text-sm text-neutral-700 hover:bg-neutral-100"
+                    className="rounded-full border border-line bg-white px-3 py-1 text-sm text-ink/80 hover:bg-olive/5"
                   >
                     {item.label}
                   </a>
@@ -81,7 +81,7 @@ export default function ContactsPage() {
 
         <div>
           <Placeholder label="Карта · Саранск, Советская ул., 33" ratio="aspect-[4/3]" />
-          <p className="mt-2 text-xs text-neutral-500">
+          <p className="mt-2 text-xs text-sage">
             Интерактивная карта будет подключена в рабочей версии (заглушка в демо).
           </p>
         </div>

@@ -24,12 +24,12 @@ export default function PricesPage() {
             if (items.length === 0) return null;
             return (
               <div key={category.slug}>
-                <h2 className="text-xl font-semibold text-neutral-900">
+                <h2 className="text-xl font-semibold text-ink">
                   {category.title}
                 </h2>
-                <div className="mt-4 overflow-hidden rounded-xl border border-neutral-200">
+                <div className="mt-4 overflow-hidden rounded-xl border border-line">
                   <table className="w-full text-left text-sm">
-                    <thead className="bg-neutral-50 text-neutral-500">
+                    <thead className="bg-cream-2 text-sage">
                       <tr>
                         <th scope="col" className="px-4 py-3 font-medium">
                           Услуга
@@ -42,21 +42,21 @@ export default function PricesPage() {
                         </th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-neutral-200">
+                    <tbody className="divide-y divide-line">
                       {items.map((service) => (
                         <tr key={service.slug}>
                           <td className="px-4 py-3">
                             <Link
                               href={`/uslugi/${service.slug}`}
-                              className="font-medium text-neutral-900 hover:underline"
+                              className="font-medium text-ink hover:underline"
                             >
                               {service.title}
                             </Link>
                           </td>
-                          <td className="px-4 py-3 text-neutral-600">
+                          <td className="px-4 py-3 text-muted">
                             {service.duration}
                           </td>
-                          <td className="px-4 py-3 text-right text-neutral-900">
+                          <td className="px-4 py-3 text-right text-ink">
                             от {formatPrice(service.priceFrom)} {service.unit}
                           </td>
                         </tr>
@@ -68,7 +68,7 @@ export default function PricesPage() {
             );
           })}
         </div>
-        <p className="mt-8 rounded-lg border border-neutral-200 bg-neutral-50 p-4 text-sm text-neutral-600">
+        <p className="mt-8 rounded-lg border border-line bg-cream-2 p-4 text-sm text-muted">
           Цены ориентировочные и зависят от длины, объёма волос и выбранных материалов.
           Финальная стоимость рассчитывается на консультации с мастером.
         </p>

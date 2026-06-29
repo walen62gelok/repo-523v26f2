@@ -35,7 +35,7 @@ export function PortfolioGrid({ items }: { items: PortfolioItem[] }) {
       <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap">
         {filters.map((filter) => (
           <div key={filter.key} className="flex flex-col gap-1">
-            <span className="text-xs font-medium uppercase tracking-wide text-neutral-500">
+            <span className="text-xs font-medium uppercase tracking-wide text-sage">
               {filter.label}
             </span>
             <div className="flex flex-wrap gap-2" role="group" aria-label={filter.label}>
@@ -47,10 +47,10 @@ export function PortfolioGrid({ items }: { items: PortfolioItem[] }) {
                     type="button"
                     aria-pressed={active}
                     onClick={() => filter.set(value)}
-                    className={`rounded-full border px-3 py-1 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 ${
+                    className={`rounded-full border px-3 py-1 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olive ${
                       active
-                        ? "border-neutral-900 bg-neutral-900 text-white"
-                        : "border-neutral-300 bg-white text-neutral-700 hover:bg-neutral-100"
+                        ? "border-olive bg-olive text-cream"
+                        : "border-line bg-white/60 text-ink/80 hover:bg-olive/5"
                     }`}
                   >
                     {value}
@@ -62,7 +62,7 @@ export function PortfolioGrid({ items }: { items: PortfolioItem[] }) {
         ))}
       </div>
 
-      <p className="mt-6 text-sm text-neutral-500" aria-live="polite">
+      <p className="mt-6 text-sm text-sage" aria-live="polite">
         Найдено работ: {filtered.length}
       </p>
 
@@ -73,7 +73,7 @@ export function PortfolioGrid({ items }: { items: PortfolioItem[] }) {
           ))}
         </div>
       ) : (
-        <p className="mt-4 rounded-lg border border-dashed border-neutral-300 p-8 text-center text-sm text-neutral-500">
+        <p className="mt-4 rounded-lg border border-dashed border-line p-8 text-center text-sm text-sage">
           По выбранным фильтрам работ не найдено.
         </p>
       )}

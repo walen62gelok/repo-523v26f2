@@ -12,7 +12,7 @@ export function Section({
   id?: string;
 }) {
   return (
-    <section id={id} className={`py-12 sm:py-16 ${className}`}>
+    <section id={id} className={`py-16 sm:py-24 ${className}`}>
       <Container>
         <Reveal>{children}</Reveal>
       </Container>
@@ -23,20 +23,23 @@ export function Section({
 export function SectionHeading({
   title,
   subtitle,
+  eyebrow,
   align = "left",
 }: {
   title: string;
   subtitle?: string;
+  eyebrow?: string;
   align?: "left" | "center";
 }) {
   return (
-    <div className={`mb-8 ${align === "center" ? "text-center" : ""}`}>
-      <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 sm:text-3xl">
+    <div className={`mb-10 ${align === "center" ? "mx-auto max-w-2xl text-center" : ""}`}>
+      {eyebrow ? <p className="eyebrow mb-3">{eyebrow}</p> : null}
+      <h2 className="text-3xl font-medium leading-[1.05] text-ink sm:text-[2.6rem]">
         {title}
       </h2>
       {subtitle ? (
         <p
-          className={`mt-2 max-w-2xl text-neutral-600 ${
+          className={`mt-4 max-w-2xl text-[15px] leading-relaxed text-muted ${
             align === "center" ? "mx-auto" : ""
           }`}
         >

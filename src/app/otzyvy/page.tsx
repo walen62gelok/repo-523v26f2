@@ -29,10 +29,10 @@ export default function ReviewsPage() {
           {badges.map((badge) => (
             <span
               key={badge.label}
-              className="inline-flex items-center gap-1.5 rounded-full border border-neutral-300 bg-white px-3 py-1 text-sm text-neutral-700"
+              className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-3 py-1 text-sm text-ink/80"
             >
               {badge.label}
-              <span className="font-semibold text-neutral-900">{badge.value}%</span>
+              <span className="font-semibold text-ink">{badge.value}%</span>
             </span>
           ))}
         </div>
@@ -51,7 +51,7 @@ export default function ReviewsPage() {
             Оставить отзыв в 2ГИС
           </ButtonLink>
         </div>
-        <p className="mt-3 text-xs text-neutral-500">
+        <p className="mt-3 text-xs text-sage">
           Кнопки отзывов — внешние заглушки в демо-версии.
         </p>
       </Section>

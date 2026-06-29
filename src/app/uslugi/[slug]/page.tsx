@@ -47,7 +47,7 @@ export default async function ServiceDetailPage({
       <PageHero title={service.title} subtitle={service.shortDescription} />
       <Container className="grid gap-10 py-12 lg:grid-cols-[1.2fr_0.8fr]">
         <div>
-          <nav className="mb-6 text-sm text-neutral-500" aria-label="Хлебные крошки">
+          <nav className="mb-6 text-sm text-sage" aria-label="Хлебные крошки">
             <Link href="/uslugi" className="hover:underline">
               Услуги
             </Link>
@@ -59,7 +59,7 @@ export default async function ServiceDetailPage({
             ) : null}
           </nav>
 
-          <p className="text-neutral-700">{service.description}</p>
+          <p className="text-ink/80">{service.description}</p>
 
           <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
             <Placeholder label="Фото 1" ratio="aspect-square" />
@@ -68,41 +68,41 @@ export default async function ServiceDetailPage({
           </div>
 
           <section className="mt-10" aria-labelledby="faq-heading">
-            <h2 id="faq-heading" className="text-xl font-semibold text-neutral-900">
+            <h2 id="faq-heading" className="text-xl font-semibold text-ink">
               Частые вопросы
             </h2>
-            <dl className="mt-4 divide-y divide-neutral-200 border-y border-neutral-200">
+            <dl className="mt-4 divide-y divide-line border-y border-line">
               {service.faq.map((item) => (
                 <div key={item.question} className="py-4">
-                  <dt className="font-medium text-neutral-900">{item.question}</dt>
-                  <dd className="mt-1 text-sm text-neutral-600">{item.answer}</dd>
+                  <dt className="font-medium text-ink">{item.question}</dt>
+                  <dd className="mt-1 text-sm text-muted">{item.answer}</dd>
                 </div>
               ))}
             </dl>
           </section>
         </div>
 
-        <aside className="h-fit rounded-xl border border-neutral-200 bg-neutral-50 p-6 lg:sticky lg:top-20">
-          <p className="text-sm text-neutral-500">Стоимость</p>
-          <p className="mt-1 text-2xl font-semibold text-neutral-900">
+        <aside className="h-fit rounded-xl border border-line bg-cream-2 p-6 lg:sticky lg:top-20">
+          <p className="text-sm text-sage">Стоимость</p>
+          <p className="mt-1 text-2xl font-semibold text-ink">
             от {formatPrice(service.priceFrom)} {service.unit}
           </p>
           <dl className="mt-4 space-y-2 text-sm">
             <div className="flex justify-between gap-4">
-              <dt className="text-neutral-500">Длительность</dt>
-              <dd className="text-neutral-900">{service.duration}</dd>
+              <dt className="text-sage">Длительность</dt>
+              <dd className="text-ink">{service.duration}</dd>
             </div>
             {category ? (
               <div className="flex justify-between gap-4">
-                <dt className="text-neutral-500">Категория</dt>
-                <dd className="text-neutral-900">{category.title}</dd>
+                <dt className="text-sage">Категория</dt>
+                <dd className="text-ink">{category.title}</dd>
               </div>
             ) : null}
           </dl>
           <ButtonLink href="/zapis" className="mt-6 w-full">
             Записаться
           </ButtonLink>
-          <p className="mt-3 text-xs text-neutral-500">
+          <p className="mt-3 text-xs text-sage">
             Цена ориентировочная. Точную стоимость рассчитаем на консультации.
           </p>
         </aside>

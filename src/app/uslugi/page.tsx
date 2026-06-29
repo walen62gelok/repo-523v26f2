@@ -21,10 +21,10 @@ export default function ServicesPage() {
         return (
           <Section key={category.slug}>
             <div className="mb-6">
-              <h2 className="text-2xl font-semibold tracking-tight text-neutral-900">
+              <h2 className="text-2xl font-semibold tracking-tight text-ink">
                 {category.title}
               </h2>
-              <p className="mt-2 max-w-2xl text-neutral-600">{category.description}</p>
+              <p className="mt-2 max-w-2xl text-muted">{category.description}</p>
             </div>
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {items.map((service) => (

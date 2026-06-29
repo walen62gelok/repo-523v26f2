@@ -25,10 +25,10 @@ export function BookingForm() {
     return (
       <div
         role="status"
-        className="rounded-xl border border-neutral-200 bg-neutral-50 p-8 text-center"
+        className="rounded-xl border border-line bg-cream-2 p-8 text-center"
       >
-        <p className="text-lg font-semibold text-neutral-900">Заявка принята (демо)</p>
-        <p className="mt-2 text-sm text-neutral-600">
+        <p className="text-lg font-semibold text-ink">Заявка принята (демо)</p>
+        <p className="mt-2 text-sm text-muted">
           Это демонстрационная форма — данные никуда не отправляются. В рабочей версии
           здесь будет подключена система записи.
         </p>
@@ -48,7 +48,7 @@ export function BookingForm() {
     <form onSubmit={handleSubmit} className="grid gap-5" noValidate>
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="flex flex-col gap-1.5">
-          <label htmlFor={ids.service} className="text-sm font-medium text-neutral-900">
+          <label htmlFor={ids.service} className="text-sm font-medium text-ink">
             Услуга
           </label>
           <select id={ids.service} name="service" className="select" defaultValue="">
@@ -64,7 +64,7 @@ export function BookingForm() {
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label htmlFor={ids.master} className="text-sm font-medium text-neutral-900">
+          <label htmlFor={ids.master} className="text-sm font-medium text-ink">
             Мастер
           </label>
           <select id={ids.master} name="master" className="select" defaultValue="">
@@ -78,21 +78,21 @@ export function BookingForm() {
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label htmlFor={ids.date} className="text-sm font-medium text-neutral-900">
+          <label htmlFor={ids.date} className="text-sm font-medium text-ink">
             Дата
           </label>
           <input id={ids.date} name="date" type="date" className="input" />
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label htmlFor={ids.time} className="text-sm font-medium text-neutral-900">
+          <label htmlFor={ids.time} className="text-sm font-medium text-ink">
             Время
           </label>
           <input id={ids.time} name="time" type="time" className="input" />
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label htmlFor={ids.name} className="text-sm font-medium text-neutral-900">
+          <label htmlFor={ids.name} className="text-sm font-medium text-ink">
             Имя
           </label>
           <input
@@ -106,7 +106,7 @@ export function BookingForm() {
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label htmlFor={ids.phone} className="text-sm font-medium text-neutral-900">
+          <label htmlFor={ids.phone} className="text-sm font-medium text-ink">
             Телефон
           </label>
           <input
@@ -122,7 +122,7 @@ export function BookingForm() {
 
       <div className="flex flex-wrap items-center gap-4">
         <Button type="submit">Отправить заявку</Button>
-        <p className="text-xs text-neutral-500">
+        <p className="text-xs text-sage">
           Демо-форма: отправка ничего не пересылает.
         </p>
       </div>

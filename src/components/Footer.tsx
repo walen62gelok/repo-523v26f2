@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Container } from "./ui/Container";
+import { Wordmark } from "./ui/Logo";
 import { siteConfig } from "@/content/site";
 
 const sections = [
@@ -15,22 +16,27 @@ const sections = [
 
 export function Footer() {
   return (
-    <footer className="mt-16 border-t border-neutral-200 bg-neutral-50">
-      <Container className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4">
-        <div>
-          <p className="text-lg font-semibold text-neutral-900">{siteConfig.name}</p>
-          <p className="mt-1 text-sm text-neutral-600">{siteConfig.tagline}</p>
+    <footer className="relative mt-8 overflow-hidden bg-olive-deep text-cream/80">
+      <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-gold/10 blur-3xl" />
+      <Container className="relative grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="sm:col-span-2 lg:col-span-1">
+          <Wordmark tone="cream" />
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-cream/60">
+            {siteConfig.tagline}. {siteConfig.city}.
+          </p>
         </div>
 
         <div>
-          <p className="text-sm font-semibold text-neutral-900">Контакты</p>
-          <address className="mt-3 space-y-1 text-sm not-italic text-neutral-600">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-cream/50">
+            Контакты
+          </p>
+          <address className="mt-4 space-y-2 text-sm not-italic text-cream/70">
             <p>
               {siteConfig.city}, {siteConfig.address}
             </p>
             <p>{siteConfig.hours}</p>
             <p>
-              <a href={siteConfig.phoneHref} className="hover:underline">
+              <a href={siteConfig.phoneHref} className="link-underline hover:text-cream">
                 {siteConfig.phone}
               </a>
             </p>
@@ -39,7 +45,7 @@ export function Footer() {
                 href={siteConfig.whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:underline"
+                className="link-underline hover:text-cream"
               >
                 WhatsApp
               </a>
@@ -48,11 +54,13 @@ export function Footer() {
         </div>
 
         <nav aria-label="Разделы сайта">
-          <p className="text-sm font-semibold text-neutral-900">Разделы</p>
-          <ul className="mt-3 space-y-1 text-sm text-neutral-600">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-cream/50">
+            Разделы
+          </p>
+          <ul className="mt-4 space-y-2 text-sm text-cream/70">
             {sections.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="hover:text-neutral-900 hover:underline">
+                <Link href={item.href} className="link-underline hover:text-cream">
                   {item.label}
                 </Link>
               </li>
@@ -61,15 +69,17 @@ export function Footer() {
         </nav>
 
         <div>
-          <p className="text-sm font-semibold text-neutral-900">Мы в сети</p>
-          <ul className="mt-3 space-y-1 text-sm text-neutral-600">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-cream/50">
+            Мы в сети
+          </p>
+          <ul className="mt-4 space-y-2 text-sm text-cream/70">
             {siteConfig.social.map((item) => (
               <li key={item.label}>
                 <a
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-neutral-900 hover:underline"
+                  className="link-underline hover:text-cream"
                 >
                   {item.label}
                 </a>
@@ -79,8 +89,8 @@ export function Footer() {
         </div>
       </Container>
 
-      <div className="border-t border-neutral-200">
-        <Container className="flex flex-col gap-1 py-5 text-xs text-neutral-500 sm:flex-row sm:items-center sm:justify-between">
+      <div className="relative border-t border-cream/10">
+        <Container className="flex flex-col gap-1 py-6 text-xs text-cream/45 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {siteConfig.name}. {siteConfig.legalNote}.
           </p>

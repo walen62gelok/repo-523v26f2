@@ -1,28 +1,130 @@
 @import "tailwindcss";
 
+/* ── Бренд Alena Lukina hair ───────────────────────────────────────────
+   Палитра снята с фирменного оформления: оливково-шалфейный, тёплый
+   греж/крем, приглушённое золото-латунь интерьера, мягкий серо-зелёный
+   текст. Типографика: изящный serif (Cormorant) + чистый гротеск (Manrope). */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cream: #f5f1e9;
+  --cream-2: #efe9dd;
+  --greige: #e7e0d2;
+  --line: #d9d1c0;
+  --ink: #2b2e25;
+  --muted: #6c705f;
+  --olive: #565d48;
+  --olive-deep: #3d4233;
+  --sage: #7e846c;
+  --gold: #ad8f5b;
+  --gold-soft: #c8af83;
+
+  --background: var(--cream);
+  --foreground: var(--ink);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  --color-cream: var(--cream);
+  --color-cream-2: var(--cream-2);
+  --color-greige: var(--greige);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-olive: var(--olive);
+  --color-olive-deep: var(--olive-deep);
+  --color-sage: var(--sage);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-cormorant), ui-serif, Georgia, serif;
+
+  --radius: 0.5rem;
+}
+
+@layer base {
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-feature-settings: "ss01", "cv11";
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--gold) 35%, transparent);
+    color: var(--ink);
+  }
 }
 
 @layer components {
   .input,
-  .select {
-    @apply w-full rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 outline-none transition-colors focus-visible:border-neutral-900 focus-visible:ring-2 focus-visible:ring-neutral-900;
+  .select,
+  .textarea {
+    @apply w-full rounded-md border border-line bg-white/70 px-3.5 py-2.5 text-sm text-ink outline-none transition-colors;
+    @apply placeholder:text-muted/60 focus-visible:border-olive focus-visible:ring-2 focus-visible:ring-olive/25;
   }
+
+  /* тонкая «золотая» линия-подчёркивание, рисуется на hover */
+  .link-underline {
+    @apply relative;
+  }
+  .link-underline::after {
+    content: "";
+    @apply absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-0 bg-current transition-transform duration-500;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .link-underline:hover::after,
+  .link-underline:focus-visible::after {
+    @apply origin-left scale-x-100;
+  }
+
+  /* мягкое «дыхание» декоративного круга в hero */
+  .eyebrow {
+    @apply text-xs font-medium uppercase tracking-[0.22em] text-sage;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+.animate-float {
+  animation: float 7s ease-in-out infinite;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+/* лёгкая тёплая зернистость поверх кремового фона — «не цифровой» вид */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
   }
 }

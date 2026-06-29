@@ -18,10 +18,10 @@ export default function BookingPage() {
       />
       <Container className="grid gap-10 py-12 lg:grid-cols-[1.4fr_0.6fr]">
         <BookingForm />
-        <aside className="h-fit rounded-xl border border-neutral-200 bg-neutral-50 p-6 text-sm text-neutral-600">
-          <p className="font-medium text-neutral-900">Предпочитаете позвонить?</p>
+        <aside className="h-fit rounded-xl border border-line bg-cream-2 p-6 text-sm text-muted">
+          <p className="font-medium text-ink">Предпочитаете позвонить?</p>
           <p className="mt-2">
-            <a href={siteConfig.phoneHref} className="text-neutral-900 hover:underline">
+            <a href={siteConfig.phoneHref} className="text-ink hover:underline">
               {siteConfig.phone}
             </a>
           </p>
@@ -30,7 +30,7 @@ export default function BookingPage() {
               href={siteConfig.whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-neutral-900 hover:underline"
+              className="text-ink hover:underline"
             >
               Написать в WhatsApp
             </a>
