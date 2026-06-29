@@ -3,22 +3,22 @@
 export function Monogram({ className = "" }: { className?: string }) {
   return (
     <svg
-      viewBox="0 0 132 150"
+      viewBox="28 8 70 102"
       role="img"
       aria-label="LA"
       className={className}
       fill="none"
       stroke="currentColor"
-      strokeWidth={3.2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      strokeWidth={4.4}
+      strokeLinecap="butt"
+      strokeLinejoin="miter"
     >
-      {/* L */}
-      <path d="M30 24 V113 H72" />
-      {/* A — две диагонали от вершины */}
-      <path d="M50 122 L88 30 L114 122" />
-      {/* низкая перекладина A */}
-      <path d="M63 98 H101" />
+      {/* L — вертикаль с длинной общей нижней перекладиной */}
+      <path d="M35 14 V86 H84" />
+      {/* A — левая диагональ к вершине */}
+      <path d="M50 86 L66 26" />
+      {/* A — правая диагональ, уходит ниже базовой линии */}
+      <path d="M66 26 L88 104" />
     </svg>
   );
 }

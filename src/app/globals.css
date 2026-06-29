@@ -12,14 +12,14 @@
      cream остаётся «светлым» (текст/светлые штрихи), olive/olive-deep — тёмные
      поверхности, ink/muted/sage перекрашены в светлые для тёмного фона. */
   --cream: #e0dace;
-  --cream-2: #464d3c;
-  --greige: #5a6150;
-  --line: #6c7361;
+  --cream-2: #515845;
+  --greige: #6a7158;
+  --line: #7a816a;
   --ink: #e4ded2;
-  --muted: #bcc0ad;
-  --olive: #585f4f;
-  --olive-deep: #383d31;
-  --sage: #aeb39d;
+  --muted: #c2c6b3;
+  --olive: #666d55;
+  --olive-deep: #444b3a;
+  --sage: #b4b9a3;
   --gold: #c8a96a;
   --gold-soft: #dcc190;
 
@@ -99,67 +99,66 @@
     font-style: italic;
   }
 
-  /* мягкая «подсветка как за зеркалами»: рассеянный, затуманенный свет,
-     который тихо дышит и разливается на hover. Лёгкий, естественный. */
+  /* «подсветка как за зеркалами»: ровный тёплый свет по периметру кнопки,
+     рассеянный и затуманенный, тихо дышит и разгорается на hover.
+     Приём — размытый radial-gradient за элементом (как в kinpaku). */
   .btn-glow {
     position: relative;
     isolation: isolate;
   }
+  /* ближний ровный ореол по периметру */
   .btn-glow::before {
     content: "";
     position: absolute;
-    inset: -45%;
+    inset: -14px -20px;
     z-index: -1;
-    border-radius: inherit;
+    border-radius: 999px;
     background: radial-gradient(
-      55% 55% at 50% 40%,
-      color-mix(in srgb, var(--gold-soft) 60%, transparent),
+      ellipse at center,
+      color-mix(in srgb, var(--gold-soft) 70%, transparent) 0%,
+      color-mix(in srgb, var(--gold-soft) 38%, transparent) 45%,
       transparent 72%
     );
-    filter: blur(20px);
-    opacity: 0.28;
-    transform: scale(0.85);
+    filter: blur(12px);
+    opacity: 0.55;
     animation: glow-breathe 7s ease-in-out infinite;
+    transition: opacity 0.7s ease, filter 0.7s ease;
     pointer-events: none;
-    will-change: opacity, transform;
+    will-change: opacity;
   }
-  /* тонкий световой блик, который медленно проходит по поверхности кнопки */
+  /* дальний рассеянный свет — мягко разливается в окружение, как за зеркалом */
   .btn-glow::after {
     content: "";
     position: absolute;
-    inset: 0;
-    border-radius: inherit;
+    inset: -34px -46px;
+    z-index: -2;
+    border-radius: 999px;
     background: radial-gradient(
-      40% 120% at var(--glow-x, 30%) 50%,
-      color-mix(in srgb, var(--cream) 65%, transparent),
-      transparent 60%
+      ellipse at center,
+      color-mix(in srgb, var(--gold-soft) 32%, transparent) 0%,
+      transparent 66%
     );
-    mix-blend-mode: soft-light;
-    opacity: 0;
-    transition: opacity 0.8s ease, --glow-x 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: blur(26px);
+    opacity: 0.4;
+    animation: glow-breathe 7s ease-in-out infinite;
+    transition: opacity 0.8s ease;
     pointer-events: none;
+    will-change: opacity;
   }
   .btn-glow:hover::before,
   .btn-glow:focus-visible::before {
-    opacity: 0.55;
-    transform: scale(1.08);
+    opacity: 0.95;
+    filter: blur(15px);
   }
   .btn-glow:hover::after,
   .btn-glow:focus-visible::after {
-    opacity: 0.85;
-    --glow-x: 70%;
+    opacity: 0.7;
   }
 }
 
-@property --glow-x {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 30%;
-}
-
 @keyframes glow-breathe {
-  0%, 100% { opacity: 0.22; transform: scale(0.85); }
-  50% { opacity: 0.4; transform: scale(0.98); }
+  0%, 100% { opacity: 0.42; }
+  50% { opacity: 0.62; }
 }
 
 @keyframes marquee {
