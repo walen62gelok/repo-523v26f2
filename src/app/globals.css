@@ -207,6 +207,47 @@
   animation: float 7s ease-in-out infinite;
 }
 
+/* вращающийся тёплый световой ободок вокруг арочного фото на главной */
+@property --ring-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes ring-spin {
+  to { --ring-angle: 360deg; }
+}
+
+@keyframes ring-breathe {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 0.9; }
+}
+
+.hero-ring {
+  background: conic-gradient(
+    from var(--ring-angle),
+    transparent 0deg,
+    color-mix(in srgb, #d8b27a 85%, transparent) 70deg,
+    color-mix(in srgb, #f3e2c2 90%, transparent) 110deg,
+    color-mix(in srgb, #d8b27a 85%, transparent) 150deg,
+    transparent 220deg,
+    transparent 360deg
+  );
+  animation: ring-spin 9s linear infinite;
+}
+
+.hero-ring-glow {
+  background: conic-gradient(
+    from var(--ring-angle),
+    transparent 0deg,
+    color-mix(in srgb, #d8b27a 70%, transparent) 90deg,
+    color-mix(in srgb, #f3e2c2 80%, transparent) 130deg,
+    transparent 230deg,
+    transparent 360deg
+  );
+  animation: ring-spin 9s linear infinite, ring-breathe 7s ease-in-out infinite;
+}
+
 html {
   scroll-behavior: smooth;
 }

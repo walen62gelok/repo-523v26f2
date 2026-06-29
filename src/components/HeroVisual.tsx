@@ -21,22 +21,38 @@ export function HeroVisual() {
 
   return (
     <div ref={ref} className="relative mx-auto max-w-md">
-      <motion.div
-        className="overflow-hidden rounded-[999px_999px_1.5rem_1.5rem]"
-        initial={reduceMotion ? false : { clipPath: "inset(100% 0 0 0)" }}
-        whileInView={reduceMotion ? undefined : { clipPath: "inset(0% 0 0 0)" }}
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 1.1, ease: EASE }}
-      >
-        <motion.div style={reduceMotion ? undefined : { scale, y }}>
-          <Placeholder
-            label="Интерьер салона Alena Lukina"
-            src="/photos/hero-interior.jpg"
-            ratio="aspect-[4/5]"
-            className="rounded-none"
-          />
+      <div className="relative rounded-[999px_999px_1.5rem_1.5rem]">
+        {/* вращающийся тёплый световой ободок по контуру арки */}
+        {!reduceMotion ? (
+          <>
+            <div
+              aria-hidden="true"
+              className="hero-ring-glow pointer-events-none absolute -inset-6 rounded-[999px_999px_2.5rem_2.5rem] blur-2xl"
+            />
+            <div
+              aria-hidden="true"
+              className="hero-ring pointer-events-none absolute -inset-[3px] rounded-[999px_999px_1.6rem_1.6rem]"
+            />
+          </>
+        ) : null}
+
+        <motion.div
+          className="relative overflow-hidden rounded-[999px_999px_1.5rem_1.5rem]"
+          initial={reduceMotion ? false : { clipPath: "inset(100% 0 0 0)" }}
+          whileInView={reduceMotion ? undefined : { clipPath: "inset(0% 0 0 0)" }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 1.1, ease: EASE }}
+        >
+          <motion.div style={reduceMotion ? undefined : { scale, y }}>
+            <Placeholder
+              label="Интерьер салона Alena Lukina"
+              src="/photos/hero-interior.jpg"
+              ratio="aspect-[4/5]"
+              className="rounded-none"
+            />
+          </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
 
       {/* плавающий золотой бейдж-монограмма */}
       <div className="animate-float absolute -left-4 bottom-10 flex h-24 w-24 flex-col items-center justify-center gap-1 rounded-full bg-olive text-cream shadow-[0_18px_36px_-18px_rgba(61,66,51,0.65)] sm:-left-8">
