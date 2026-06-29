@@ -11,17 +11,17 @@
   /* Тёмная оливковая тема: фон — олива/шалфей, текст — крем (как на карточках).
      cream остаётся «светлым» (текст/светлые штрихи), olive/olive-deep — тёмные
      поверхности, ink/muted/sage перекрашены в светлые для тёмного фона. */
-  --cream: #f4efe4;
-  --cream-2: #474e3a;
-  --greige: #5a6147;
-  --line: #6b7259;
-  --ink: #f1ece0;
-  --muted: #c1c5b2;
-  --olive: #565d48;
-  --olive-deep: #3d4233;
-  --sage: #b3b8a1;
+  --cream: #e0dace;
+  --cream-2: #464d3c;
+  --greige: #5a6150;
+  --line: #6c7361;
+  --ink: #e4ded2;
+  --muted: #bcc0ad;
+  --olive: #585f4f;
+  --olive-deep: #383d31;
+  --sage: #aeb39d;
   --gold: #c8a96a;
-  --gold-soft: #d8bd88;
+  --gold-soft: #dcc190;
 
   --background: var(--olive-deep);
   --foreground: var(--cream);
@@ -98,6 +98,68 @@
     font-family: var(--font-script);
     font-style: italic;
   }
+
+  /* мягкая «подсветка как за зеркалами»: рассеянный, затуманенный свет,
+     который тихо дышит и разливается на hover. Лёгкий, естественный. */
+  .btn-glow {
+    position: relative;
+    isolation: isolate;
+  }
+  .btn-glow::before {
+    content: "";
+    position: absolute;
+    inset: -45%;
+    z-index: -1;
+    border-radius: inherit;
+    background: radial-gradient(
+      55% 55% at 50% 40%,
+      color-mix(in srgb, var(--gold-soft) 60%, transparent),
+      transparent 72%
+    );
+    filter: blur(20px);
+    opacity: 0.28;
+    transform: scale(0.85);
+    animation: glow-breathe 7s ease-in-out infinite;
+    pointer-events: none;
+    will-change: opacity, transform;
+  }
+  /* тонкий световой блик, который медленно проходит по поверхности кнопки */
+  .btn-glow::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      40% 120% at var(--glow-x, 30%) 50%,
+      color-mix(in srgb, var(--cream) 65%, transparent),
+      transparent 60%
+    );
+    mix-blend-mode: soft-light;
+    opacity: 0;
+    transition: opacity 0.8s ease, --glow-x 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+  }
+  .btn-glow:hover::before,
+  .btn-glow:focus-visible::before {
+    opacity: 0.55;
+    transform: scale(1.08);
+  }
+  .btn-glow:hover::after,
+  .btn-glow:focus-visible::after {
+    opacity: 0.85;
+    --glow-x: 70%;
+  }
+}
+
+@property --glow-x {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 30%;
+}
+
+@keyframes glow-breathe {
+  0%, 100% { opacity: 0.22; transform: scale(0.85); }
+  50% { opacity: 0.4; transform: scale(0.98); }
 }
 
 @keyframes marquee {
