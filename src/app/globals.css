@@ -1,0 +1,292 @@
+@import "tailwindcss";
+
+/* ── Бренд Alena Lukina hair ───────────────────────────────────────────
+   Палитра снята с фирменного оформления: оливково-шалфейный, тёплый
+   греж/крем, приглушённое золото-латунь интерьера, мягкий серо-зелёный
+   текст. Типографика фирменная: геометрический гротеск Montserrat
+   (тонкий с разрядкой + жирный для акцентов), курсивный serif Cormorant
+   только для скрипт-слова «hair» в логотипе. */
+
+:root {
+  /* Тёмная оливковая тема: фон — олива/шалфей, текст — крем (как на карточках).
+     cream остаётся «светлым» (текст/светлые штрихи), olive/olive-deep — тёмные
+     поверхности, ink/muted/sage перекрашены в светлые для тёмного фона. */
+  --cream: #ddd8cc;
+  --cream-2: #5f6657;
+  --greige: #6a7160;
+  --line: #79806e;
+  --ink: #e2ddd2;
+  --muted: #c0c4b3;
+  --olive: #656c59;
+  --olive-deep: #575e4f;
+  --sage: #b1b6a1;
+  --gold: #c8a96a;
+  --gold-soft: #dcc190;
+
+  --background: var(--olive-deep);
+  --foreground: var(--cream);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-cream: var(--cream);
+  --color-cream-2: var(--cream-2);
+  --color-greige: var(--greige);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-olive: var(--olive);
+  --color-olive-deep: var(--olive-deep);
+  --color-sage: var(--sage);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-script: var(--font-cormorant), ui-serif, Georgia, serif;
+
+  --radius: 0.5rem;
+}
+
+@layer base {
+  body {
+    background: var(--olive-deep);
+    color: var(--ink);
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+    font-weight: 500;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--gold) 45%, transparent);
+    color: var(--olive-deep);
+  }
+}
+
+@layer components {
+  .input,
+  .select,
+  .textarea {
+    @apply w-full rounded-md border border-line bg-cream/[0.06] px-3.5 py-2.5 text-sm text-ink outline-none transition-colors;
+    @apply placeholder:text-muted/50 focus-visible:border-gold focus-visible:ring-2 focus-visible:ring-gold/25;
+  }
+
+  /* тонкая «золотая» линия-подчёркивание, рисуется на hover */
+  .link-underline {
+    @apply relative;
+  }
+  .link-underline::after {
+    content: "";
+    @apply absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-0 bg-current transition-transform duration-500;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .link-underline:hover::after,
+  .link-underline:focus-visible::after {
+    @apply origin-left scale-x-100;
+  }
+
+  /* фирменная подпись: тонкий гротеск с широкой разрядкой (как «Alena Lukina») */
+  .eyebrow {
+    @apply text-[11px] font-light uppercase tracking-[0.34em] text-sage;
+  }
+
+  /* курсивный serif только для скрипт-слова «hair» */
+  .font-script {
+    font-family: var(--font-script);
+    font-style: italic;
+  }
+
+  /* «RGB-лента за кнопкой»: тёплый контурный свет, повторяющий форму кнопки
+     (как LED-подсветка за зеркалом). По умолчанию тлеет, на hover ярче,
+     при нажатии — резко «включается», как настоящая лента. */
+  .btn-glow {
+    position: relative;
+    isolation: isolate;
+  }
+  /* контур-лента: бликует точно по периметру капсулы (box-shadow повторяет
+     border-radius, поэтому свет идёт ровной полосой вокруг формы) */
+  .btn-glow::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    z-index: -1;
+    border-radius: 999px;
+    box-shadow:
+      0 0 5px 1px color-mix(in srgb, var(--gold-soft) 88%, #fff4d6),
+      0 0 12px 3px color-mix(in srgb, var(--gold-soft) 60%, transparent),
+      0 0 26px 7px color-mix(in srgb, var(--gold-soft) 38%, transparent),
+      0 0 48px 15px color-mix(in srgb, var(--gold-soft) 20%, transparent);
+    opacity: 0.14;
+    /* свет плавно разгорается и так же мягко гаснет — без резких вспышек */
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    will-change: opacity;
+  }
+  .btn-glow:hover::before {
+    opacity: 0.55;
+  }
+  .btn-glow:focus-visible::before {
+    opacity: 0.8;
+  }
+  /* нажатие — лента плавно «загорается» на полную и держится */
+  .btn-glow:active::before {
+    opacity: 1;
+    transition-duration: 0.45s;
+  }
+
+  /* ── Double-Bezel: карточка как физическая «оправа» ───────────────────
+     внешняя оболочка с волосяной рамкой + внутреннее ядро со своим фоном
+     и мягким внутренним светом (как стекло в металлическом лотке). */
+  .bezel {
+    border-radius: 1.85rem;
+    padding: 6px;
+    background:
+      linear-gradient(
+        158deg,
+        color-mix(in srgb, var(--cream) 9%, transparent),
+        color-mix(in srgb, var(--olive-deep) 55%, transparent) 55%,
+        color-mix(in srgb, #000 14%, transparent)
+      );
+    border: 1px solid color-mix(in srgb, var(--cream) 8%, transparent);
+    box-shadow:
+      inset 0 1px 0 color-mix(in srgb, var(--cream) 12%, transparent),
+      0 24px 50px -30px rgba(0, 0, 0, 0.65);
+  }
+  .bezel-core {
+    border-radius: 1.4rem;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--cream) 5%, transparent);
+    box-shadow: inset 0 1px 0 color-mix(in srgb, var(--cream) 7%, transparent);
+  }
+
+  /* ── Spotlight-border: тёплый световой контур, бегущий за курсором ──── */
+  .spotlight {
+    position: relative;
+  }
+  .spotlight::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: radial-gradient(
+      240px circle at var(--mx, 50%) var(--my, 0%),
+      color-mix(in srgb, var(--gold-soft) 78%, transparent),
+      color-mix(in srgb, var(--gold-soft) 24%, transparent) 38%,
+      transparent 62%
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .spotlight:hover::after {
+    opacity: 0.95;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+.animate-float {
+  animation: float 7s ease-in-out infinite;
+}
+
+/* вращающийся тёплый световой ободок вокруг арочного фото на главной */
+@property --ring-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes ring-spin {
+  to { --ring-angle: 360deg; }
+}
+
+@keyframes ring-breathe {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 0.9; }
+}
+
+.hero-ring {
+  background: conic-gradient(
+    from var(--ring-angle),
+    transparent 0deg,
+    color-mix(in srgb, #d8b27a 85%, transparent) 70deg,
+    color-mix(in srgb, #f3e2c2 90%, transparent) 110deg,
+    color-mix(in srgb, #d8b27a 85%, transparent) 150deg,
+    transparent 220deg,
+    transparent 360deg
+  );
+  animation: ring-spin 9s linear infinite;
+}
+
+.hero-ring-glow {
+  background: conic-gradient(
+    from var(--ring-angle),
+    transparent 0deg,
+    color-mix(in srgb, #d8b27a 70%, transparent) 90deg,
+    color-mix(in srgb, #f3e2c2 80%, transparent) 130deg,
+    transparent 230deg,
+    transparent 360deg
+  );
+  animation: ring-spin 9s linear infinite, ring-breathe 7s ease-in-out infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* плёночное зерно поверх оливкового фона — «не цифровой», бумажный вид */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.055;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* мягкая виньетка — слегка притеняет края, фокус к центру (как свет в салоне) */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      120% 90% at 50% 18%,
+      transparent 52%,
+      color-mix(in srgb, #000 22%, transparent) 100%
+    );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
