@@ -99,66 +99,42 @@
     font-style: italic;
   }
 
-  /* «подсветка как за зеркалами»: ровный тёплый свет по периметру кнопки,
-     рассеянный и затуманенный, тихо дышит и разгорается на hover.
-     Приём — размытый radial-gradient за элементом (как в kinpaku). */
+  /* «RGB-лента за кнопкой»: тёплый контурный свет, повторяющий форму кнопки
+     (как LED-подсветка за зеркалом). По умолчанию тлеет, на hover ярче,
+     при нажатии — резко «включается», как настоящая лента. */
   .btn-glow {
     position: relative;
     isolation: isolate;
   }
-  /* ближний ровный ореол по периметру */
+  /* контур-лента: бликует точно по периметру капсулы (box-shadow повторяет
+     border-radius, поэтому свет идёт ровной полосой вокруг формы) */
   .btn-glow::before {
     content: "";
     position: absolute;
-    inset: -14px -20px;
+    inset: -2px;
     z-index: -1;
     border-radius: 999px;
-    background: radial-gradient(
-      ellipse at center,
-      color-mix(in srgb, var(--gold-soft) 70%, transparent) 0%,
-      color-mix(in srgb, var(--gold-soft) 38%, transparent) 45%,
-      transparent 72%
-    );
-    filter: blur(12px);
-    opacity: 0.55;
-    animation: glow-breathe 7s ease-in-out infinite;
-    transition: opacity 0.7s ease, filter 0.7s ease;
+    box-shadow:
+      0 0 5px 1px color-mix(in srgb, var(--gold-soft) 88%, #fff4d6),
+      0 0 12px 3px color-mix(in srgb, var(--gold-soft) 60%, transparent),
+      0 0 26px 7px color-mix(in srgb, var(--gold-soft) 38%, transparent),
+      0 0 48px 15px color-mix(in srgb, var(--gold-soft) 20%, transparent);
+    opacity: 0.16;
+    transition: opacity 0.5s ease;
     pointer-events: none;
     will-change: opacity;
   }
-  /* дальний рассеянный свет — мягко разливается в окружение, как за зеркалом */
-  .btn-glow::after {
-    content: "";
-    position: absolute;
-    inset: -34px -46px;
-    z-index: -2;
-    border-radius: 999px;
-    background: radial-gradient(
-      ellipse at center,
-      color-mix(in srgb, var(--gold-soft) 32%, transparent) 0%,
-      transparent 66%
-    );
-    filter: blur(26px);
-    opacity: 0.4;
-    animation: glow-breathe 7s ease-in-out infinite;
-    transition: opacity 0.8s ease;
-    pointer-events: none;
-    will-change: opacity;
+  .btn-glow:hover::before {
+    opacity: 0.5;
   }
-  .btn-glow:hover::before,
   .btn-glow:focus-visible::before {
-    opacity: 0.95;
-    filter: blur(15px);
+    opacity: 0.85;
   }
-  .btn-glow:hover::after,
-  .btn-glow:focus-visible::after {
-    opacity: 0.7;
+  /* нажатие — мгновенное «включение» ленты на полную */
+  .btn-glow:active::before {
+    opacity: 1;
+    transition-duration: 0.06s;
   }
-}
-
-@keyframes glow-breathe {
-  0%, 100% { opacity: 0.42; }
-  50% { opacity: 0.62; }
 }
 
 @keyframes marquee {
