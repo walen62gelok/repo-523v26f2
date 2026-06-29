@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Placeholder } from "@/components/ui/Placeholder";
 import { ButtonLink } from "@/components/ui/Button";
+import { Reveal } from "@/components/ui/Reveal";
 import { PageHero, RatingBadge } from "@/components/blocks";
 import { siteConfig } from "@/content/site";
 
@@ -35,11 +36,45 @@ export default function AboutPage() {
               <RatingBadge />
             </div>
           </div>
-          <Placeholder
-            label="Интерьер салона Alena Lukina"
-            src="/photos/interior-green.jpg"
-            ratio="aspect-[4/3]"
-          />
+          <Reveal direction="left" className="relative">
+            {/* фирменный мотив — концентрические кольца за коллажем */}
+            <div className="pointer-events-none absolute -right-8 -top-10 aspect-square w-44 rounded-full border border-line/60 sm:w-56" />
+            <div className="pointer-events-none absolute -bottom-8 -left-6 aspect-square w-28 rounded-full border border-line/50" />
+
+            <div className="relative flex gap-3 sm:gap-4">
+              <div className="w-[58%] self-end overflow-hidden rounded-[1.75rem] shadow-[0_30px_60px_-30px_rgba(20,24,16,0.6)]">
+                <Placeholder
+                  label="Интерьер салона Alena Lukina"
+                  src="/photos/interior-green.jpg"
+                  ratio="aspect-[3/4]"
+                  className="rounded-none transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.04]"
+                />
+              </div>
+              <div className="flex w-[42%] flex-col gap-3 sm:gap-4">
+                <div className="overflow-hidden rounded-[1.25rem] shadow-[0_22px_44px_-24px_rgba(20,24,16,0.55)]">
+                  <Placeholder
+                    label="Рабочее место мастера"
+                    src="/photos/interior-chairs.jpg"
+                    ratio="aspect-square"
+                    className="rounded-none transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.04]"
+                  />
+                </div>
+                <div className="overflow-hidden rounded-[1.25rem] shadow-[0_22px_44px_-24px_rgba(20,24,16,0.55)]">
+                  <Placeholder
+                    label="Тёплый свет в салоне"
+                    src="/photos/interior-lights.jpg"
+                    ratio="aspect-[4/5]"
+                    className="rounded-none transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.04]"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* плавающая подпись-бейдж */}
+            <div className="absolute -bottom-4 left-6 rounded-full border border-line bg-olive/90 px-4 py-2 text-[11px] uppercase tracking-[0.2em] text-cream backdrop-blur sm:left-1/3">
+              Саранск · Советская, 33
+            </div>
+          </Reveal>
         </div>
       </Section>
 
