@@ -119,37 +119,23 @@
       0 0 12px 3px color-mix(in srgb, var(--gold-soft) 60%, transparent),
       0 0 26px 7px color-mix(in srgb, var(--gold-soft) 38%, transparent),
       0 0 48px 15px color-mix(in srgb, var(--gold-soft) 20%, transparent);
-    opacity: 0.16;
-    /* лента тихо «тлеет» — как включённая, но приглушённая подсветка */
-    animation: led-idle 6s ease-in-out infinite;
-    transition: opacity 0.5s ease, filter 0.5s ease;
+    opacity: 0.14;
+    /* свет плавно разгорается и так же мягко гаснет — без резких вспышек */
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
     pointer-events: none;
-    will-change: opacity, filter;
+    will-change: opacity;
   }
   .btn-glow:hover::before {
-    animation: none;
-    opacity: 0.5;
+    opacity: 0.55;
   }
   .btn-glow:focus-visible::before {
-    animation: none;
-    opacity: 0.85;
+    opacity: 0.8;
   }
-  /* нажатие — лента резко «вспыхивает» и остаётся гореть, как включили свет */
+  /* нажатие — лента плавно «загорается» на полную и держится */
   .btn-glow:active::before {
-    animation: led-ignite 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     opacity: 1;
+    transition-duration: 0.45s;
   }
-}
-
-@keyframes led-idle {
-  0%, 100% { opacity: 0.12; }
-  50% { opacity: 0.22; }
-}
-
-@keyframes led-ignite {
-  0% { opacity: 0.5; filter: brightness(1); }
-  16% { opacity: 1; filter: brightness(1.35); }
-  100% { opacity: 1; filter: brightness(1); }
 }
 
 @keyframes marquee {

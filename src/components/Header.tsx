@@ -19,9 +19,12 @@ const navItems = [
   { href: "/kontakty", label: "Контакты" },
 ];
 
+const ease = [0.16, 1, 0.3, 1] as const;
+
 export function Header() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [atTop, setAtTop] = useState(true);
+  const [hidden, setHidden] = useState(false);
   const pathname = usePathname();
   const reduceMotion = useReducedMotion();
 
@@ -31,7 +34,15 @@ export function Header() {
   }, [pathname]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    let last = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setAtTop(y <= 8);
+      if (Math.abs(y - last) > 6) {
+        setHidden(y > last && y > 140);
+        last = y;
+      }
+    };
     const raf = requestAnimationFrame(onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
@@ -48,14 +59,19 @@ export function Header() {
   }, [open]);
 
   return (
-    <header
-      className={`sticky top-0 z-40 border-b transition-all duration-500 ${
-        scrolled
-          ? "border-line bg-olive-deep/85 backdrop-blur-md"
-          : "border-transparent bg-olive-deep/40 backdrop-blur-sm"
+    <>
+      <header
+      className={`sticky top-0 z-40 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        hidden && !open
+          ? "-translate-y-full opacity-0"
+          : "translate-y-0 opacity-100"
+      } ${
+        atTop || open
+          ? "border-b border-transparent bg-transparent"
+          : "border-b border-line/60 bg-olive-deep/80 backdrop-blur-md"
       }`}
     >
-      <Container className="flex h-18 items-center justify-between gap-4 py-3">
+      <Container className="flex h-16 items-center justify-between gap-4">
         <Link
           href="/"
           className="rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olive/40"
@@ -64,102 +80,121 @@ export function Header() {
           <Wordmark />
         </Link>
 
-        <nav aria-label="Основная навигация" className="hidden items-center gap-7 lg:flex">
-          {navItems.map((item) => {
-            const active = pathname === item.href;
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`link-underline text-sm transition-colors focus-visible:outline-none ${
-                  active ? "text-gold-soft" : "text-muted hover:text-ink"
-                }`}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
-
-        <div className="hidden items-center gap-4 lg:flex">
-          <a
-            href={siteConfig.phoneHref}
-            className="link-underline text-sm font-medium text-ink"
-          >
-            {siteConfig.phone}
-          </a>
-          <ButtonLink href="/zapis" className="px-5 py-2.5">
+        <div className="flex items-center gap-3">
+          <ButtonLink href="/zapis" className="hidden px-5 py-2.5 sm:inline-flex">
             Записаться
           </ButtonLink>
+          <button
+            type="button"
+            className="btn-glow group inline-flex items-center gap-2.5 rounded-full border border-cream/25 px-4 py-2.5 text-sm tracking-wide text-ink transition-colors duration-300 hover:border-cream/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/40"
+            aria-expanded={open}
+            aria-controls="site-menu"
+            aria-label="Открыть меню"
+            onClick={() => setOpen(true)}
+          >
+            <span className="flex flex-col gap-[5px]">
+              <span className="block h-px w-5 bg-current transition-transform duration-300 group-hover:translate-y-[1px]" />
+              <span className="block h-px w-5 bg-current transition-transform duration-300 group-hover:-translate-y-[1px]" />
+            </span>
+            Меню
+          </button>
         </div>
-
-        <button
-          type="button"
-          className="relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-cream/25 text-ink lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/40"
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          aria-label={open ? "Закрыть меню" : "Открыть меню"}
-          onClick={() => setOpen((value) => !value)}
-        >
-          <span className="relative block h-3.5 w-5">
-            <span
-              className={`absolute left-0 block h-px w-5 bg-current transition-all duration-300 ${
-                open ? "top-1.5 rotate-45" : "top-0"
-              }`}
-            />
-            <span
-              className={`absolute left-0 top-1.5 block h-px w-5 bg-current transition-all duration-300 ${
-                open ? "opacity-0" : "opacity-100"
-              }`}
-            />
-            <span
-              className={`absolute left-0 block h-px w-5 bg-current transition-all duration-300 ${
-                open ? "top-1.5 -rotate-45" : "top-3"
-              }`}
-            />
-          </span>
-        </button>
       </Container>
+      </header>
 
       <AnimatePresence>
         {open ? (
           <motion.div
-            id="mobile-nav"
-            className="overflow-hidden border-t border-line bg-olive-deep lg:hidden"
-            initial={reduceMotion ? false : { height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={reduceMotion ? undefined : { height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            id="site-menu"
+            className="fixed inset-0 z-50 flex flex-col bg-olive-deep"
+            initial={reduceMotion ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={reduceMotion ? undefined : { opacity: 0 }}
+            transition={{ duration: 0.5, ease }}
           >
-            <Container className="flex flex-col gap-1 py-5">
-              {navItems.map((item, i) => (
-                <motion.div
-                  key={item.href}
-                  initial={reduceMotion ? false : { opacity: 0, x: -12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.05 + i * 0.04, duration: 0.4 }}
-                >
-                  <Link
-                    href={item.href}
-                    className="block rounded-lg px-3 py-2.5 text-[15px] text-ink transition-colors hover:bg-cream/5"
-                  >
-                    {item.label}
-                  </Link>
-                </motion.div>
-              ))}
-              <a
-                href={siteConfig.phoneHref}
-                className="rounded-lg px-3 py-2.5 text-[15px] font-medium text-ink transition-colors hover:bg-cream/5"
+            <div className="pointer-events-none absolute inset-0 opacity-[0.5]">
+              <div className="absolute -right-24 top-1/3 h-[42rem] w-[42rem] rounded-full border border-cream/[0.06]" />
+              <div className="absolute -right-10 top-1/3 h-[28rem] w-[28rem] rounded-full border border-cream/[0.05]" />
+            </div>
+
+            <Container className="flex h-16 items-center justify-between gap-4">
+              <Wordmark />
+              <button
+                type="button"
+                className="btn-glow inline-flex h-11 w-11 items-center justify-center rounded-full border border-cream/25 text-ink transition-colors duration-300 hover:border-cream/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/40"
+                aria-label="Закрыть меню"
+                onClick={() => setOpen(false)}
               >
-                {siteConfig.phone}
-              </a>
-              <ButtonLink href="/zapis" className="mt-3 w-full">
-                Записаться
-              </ButtonLink>
+                <span className="relative block h-4 w-4">
+                  <span className="absolute left-0 top-1/2 block h-px w-4 -translate-y-1/2 rotate-45 bg-current" />
+                  <span className="absolute left-0 top-1/2 block h-px w-4 -translate-y-1/2 -rotate-45 bg-current" />
+                </span>
+              </button>
+            </Container>
+
+            <Container className="relative flex flex-1 flex-col justify-center py-10">
+              <nav aria-label="Основная навигация" className="flex flex-col gap-1">
+                {navItems.map((item, i) => {
+                  const active = pathname === item.href;
+                  return (
+                    <motion.div
+                      key={item.href}
+                      initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.12 + i * 0.06, duration: 0.6, ease }}
+                    >
+                      <Link
+                        href={item.href}
+                        className={`group inline-flex items-baseline gap-4 py-2 font-light leading-tight tracking-tight transition-colors duration-300 text-[clamp(2rem,7vw,3.75rem)] ${
+                          active ? "text-gold-soft" : "text-ink hover:text-gold-soft"
+                        }`}
+                      >
+                        <span className="text-xs font-normal tracking-[0.3em] text-sage tabular-nums">
+                          0{i + 1}
+                        </span>
+                        {item.label}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </nav>
+
+              <motion.div
+                className="mt-12 flex flex-col gap-5 border-t border-line/50 pt-8 sm:flex-row sm:items-end sm:justify-between"
+                initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.12 + navItems.length * 0.06, duration: 0.6, ease }}
+              >
+                <div className="flex flex-col gap-2">
+                  <a
+                    href={siteConfig.phoneHref}
+                    className="link-underline text-lg font-medium text-ink"
+                  >
+                    {siteConfig.phone}
+                  </a>
+                  <span className="text-sm text-muted">
+                    {siteConfig.city}, {siteConfig.address} · {siteConfig.hours}
+                  </span>
+                  <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1">
+                    {siteConfig.social.slice(0, 3).map((s) => (
+                      <a
+                        key={s.label}
+                        href={s.href}
+                        className="link-underline text-xs uppercase tracking-[0.18em] text-sage hover:text-ink"
+                      >
+                        {s.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+                <ButtonLink href="/zapis" className="self-start sm:self-auto">
+                  Записаться онлайн
+                </ButtonLink>
+              </motion.div>
             </Container>
           </motion.div>
         ) : null}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
