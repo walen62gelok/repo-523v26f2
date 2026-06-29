@@ -57,7 +57,7 @@ export default function ContactsPage() {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="rounded-full border border-line bg-white px-3 py-1 text-sm text-ink/80 hover:bg-olive/5"
+                    className="rounded-full border border-line bg-cream/[0.05] px-3 py-1 text-sm text-ink/80 hover:bg-cream/10"
                   >
                     {item.label}
                   </a>

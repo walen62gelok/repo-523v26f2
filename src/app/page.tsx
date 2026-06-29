@@ -75,9 +75,9 @@ export default function HomePage() {
                 Волосы, которые
                 <br />
                 выглядят{" "}
-                <span className="font-semibold text-olive">как ваши</span>
+                <span className="font-semibold text-gold-soft">как ваши</span>
                 <br className="hidden sm:block" />
-                <span className="font-semibold text-olive"> собственные</span>
+                <span className="font-semibold text-gold-soft"> собственные</span>
               </h1>
             </Reveal>
             <Reveal delay={0.16}>
@@ -127,7 +127,7 @@ export default function HomePage() {
                 <p className="text-2xl font-semibold text-olive">
                   {siteConfig.rating.value}
                 </p>
-                <p className="text-[10px] uppercase tracking-[0.16em] text-sage">
+                <p className="text-[10px] uppercase tracking-[0.16em] text-olive/60">
                   рейтинг
                 </p>
               </div>
@@ -147,7 +147,7 @@ export default function HomePage() {
           <Stagger className="grid grid-cols-2 gap-6 sm:grid-cols-4">
             {stats.map((stat) => (
               <RevealItem key={stat.label} className="text-center">
-                <p className="text-4xl font-light text-olive sm:text-5xl">
+                <p className="text-4xl font-light text-gold-soft sm:text-5xl">
                   <Counter to={stat.value} decimals={stat.decimals} suffix={stat.suffix} />
                 </p>
                 <p className="mt-2 text-[11px] font-light uppercase tracking-[0.24em] text-muted">
@@ -170,7 +170,7 @@ export default function HomePage() {
           {advantages.map((item) => (
             <RevealItem
               key={item.title}
-              className="rounded-2xl border border-line bg-white/55 p-7 transition-colors hover:bg-white"
+              className="rounded-2xl border border-line bg-cream/[0.05] p-7 transition-colors hover:bg-cream/10"
             >
               <h3 className="font-display text-xl font-medium text-ink">{item.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{item.text}</p>

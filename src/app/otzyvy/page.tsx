@@ -29,7 +29,7 @@ export default function ReviewsPage() {
           {badges.map((badge) => (
             <span
               key={badge.label}
-              className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-3 py-1 text-sm text-ink/80"
+              className="inline-flex items-center gap-1.5 rounded-full border border-line bg-cream/[0.05] px-3 py-1 text-sm text-ink/80"
             >
               {badge.label}
               <span className="font-semibold text-ink">{badge.value}%</span>

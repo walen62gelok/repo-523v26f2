@@ -7,7 +7,7 @@ export function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Написать в WhatsApp (демо)"
-      className="group fixed bottom-5 right-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-olive text-cream shadow-[0_10px_30px_-8px_rgba(61,66,51,0.7)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-105 hover:bg-olive-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olive/40 focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
+      className="group fixed bottom-5 right-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-gold text-olive-deep shadow-[0_10px_30px_-8px_rgba(0,0,0,0.6)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-105 hover:bg-gold-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50 focus-visible:ring-offset-2 focus-visible:ring-offset-olive-deep"
     >
       <svg
         viewBox="0 0 24 24"

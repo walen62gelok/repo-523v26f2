@@ -37,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" className={`${montserrat.variable} ${cormorant.variable}`}>
-      <body className="relative z-[1] flex min-h-screen flex-col bg-cream font-sans text-ink antialiased">
+      <body className="relative z-[1] flex min-h-screen flex-col bg-olive-deep font-sans text-ink antialiased">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-olive focus:px-4 focus:py-2 focus:text-sm focus:text-cream"

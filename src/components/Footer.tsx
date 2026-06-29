@@ -17,7 +17,8 @@ const sections = [
 export function Footer() {
   return (
     <footer className="relative mt-8 overflow-hidden bg-olive-deep text-cream/80">
-      <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-gold/10 blur-3xl" />
+      <div className="pointer-events-none absolute -right-28 -top-28 aspect-square w-[24rem] rounded-full border border-cream/10" />
+      <div className="pointer-events-none absolute -right-14 -top-14 aspect-square w-[17rem] rounded-full border border-cream/10" />
       <Container className="relative grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4">
         <div className="sm:col-span-2 lg:col-span-1">
           <Wordmark tone="cream" />

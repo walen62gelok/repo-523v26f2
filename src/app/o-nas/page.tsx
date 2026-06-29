@@ -45,7 +45,7 @@ export default function AboutPage() {
           {siteConfig.amenities.map((item) => (
             <div
               key={item}
-              className="rounded-xl border border-line bg-white p-5 text-sm font-medium text-ink"
+              className="rounded-xl border border-line bg-cream/[0.05] p-5 text-sm font-medium text-ink"
             >
               {item}
             </div>

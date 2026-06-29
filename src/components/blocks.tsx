@@ -40,7 +40,7 @@ export function PageHero({
 export function RatingBadge({ className = "" }: { className?: string }) {
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-full border border-line bg-white/60 px-3.5 py-1.5 text-sm text-muted ${className}`}
+      className={`inline-flex items-center gap-1.5 rounded-full border border-line bg-cream/[0.06] px-3.5 py-1.5 text-sm text-muted ${className}`}
     >
       <span aria-hidden="true" className="text-gold">★</span>
       <span className="font-semibold text-ink">{siteConfig.rating.value}</span>
@@ -53,7 +53,7 @@ export function ServiceCard({ service }: { service: Service }) {
   return (
     <Link
       href={`/uslugi/${service.slug}`}
-      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white/55 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-olive/30 hover:bg-white hover:shadow-[0_18px_40px_-22px_rgba(61,66,51,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olive/40"
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-cream/[0.05] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-olive/30 hover:bg-cream/10 hover:shadow-[0_18px_40px_-22px_rgba(61,66,51,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olive/40"
     >
       <div className="overflow-hidden">
         <Placeholder
@@ -71,7 +71,7 @@ export function ServiceCard({ service }: { service: Service }) {
           <span className="text-sm font-semibold text-ink">
             от {formatPrice(service.priceFrom)} {service.unit}
           </span>
-          <span className="text-sm text-sage transition-colors group-hover:text-olive">
+          <span className="text-sm text-sage transition-colors group-hover:text-gold-soft">
             Подробнее →
           </span>
         </div>
@@ -82,7 +82,7 @@ export function ServiceCard({ service }: { service: Service }) {
 
 export function MasterCard({ master }: { master: Master }) {
   return (
-    <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white/55 transition-all duration-500 hover:-translate-y-1 hover:bg-white hover:shadow-[0_18px_40px_-22px_rgba(61,66,51,0.5)]">
+    <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-cream/[0.05] transition-all duration-500 hover:-translate-y-1 hover:bg-cream/10 hover:shadow-[0_18px_40px_-22px_rgba(61,66,51,0.5)]">
       <div className="overflow-hidden">
         <Placeholder
           label={master.photo}
@@ -92,7 +92,7 @@ export function MasterCard({ master }: { master: Master }) {
       </div>
       <div className="flex flex-1 flex-col p-6">
         <h3 className="font-display text-xl font-medium text-ink">{master.name}</h3>
-        <p className="mt-1 text-sm text-olive">{master.specialization}</p>
+        <p className="mt-1 text-sm text-gold-soft">{master.specialization}</p>
         <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-sage">
           {master.experience}
         </p>
@@ -104,10 +104,10 @@ export function MasterCard({ master }: { master: Master }) {
 
 export function ReviewCard({ review }: { review: Review }) {
   return (
-    <figure className="relative flex h-full flex-col rounded-2xl border border-line bg-white/55 p-6 transition-all duration-500 hover:bg-white hover:shadow-[0_18px_40px_-22px_rgba(61,66,51,0.5)]">
+    <figure className="relative flex h-full flex-col rounded-2xl border border-line bg-cream/[0.05] p-6 transition-all duration-500 hover:bg-cream/10 hover:shadow-[0_18px_40px_-22px_rgba(61,66,51,0.5)]">
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute right-5 top-2 font-display text-6xl leading-none text-olive/10"
+        className="pointer-events-none absolute right-5 top-2 font-display text-6xl leading-none text-cream/10"
       >
         &rdquo;
       </span>
@@ -132,7 +132,7 @@ export function ReviewCard({ review }: { review: Review }) {
 
 export function PortfolioCard({ item }: { item: PortfolioItem }) {
   return (
-    <figure className="group overflow-hidden rounded-2xl border border-line bg-white/55 transition-all duration-500 hover:-translate-y-1 hover:bg-white hover:shadow-[0_18px_40px_-22px_rgba(61,66,51,0.5)]">
+    <figure className="group overflow-hidden rounded-2xl border border-line bg-cream/[0.05] transition-all duration-500 hover:-translate-y-1 hover:bg-cream/10 hover:shadow-[0_18px_40px_-22px_rgba(61,66,51,0.5)]">
       <div className="grid grid-cols-2 gap-px bg-line">
         <div className="relative overflow-hidden">
           <Placeholder
@@ -140,7 +140,7 @@ export function PortfolioCard({ item }: { item: PortfolioItem }) {
             ratio="aspect-square"
             className="rounded-none transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
           />
-          <span className="absolute left-2.5 top-2.5 rounded-full bg-ink/75 px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-[0.14em] text-cream">
+          <span className="absolute left-2.5 top-2.5 rounded-full bg-olive-deep/85 px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-[0.14em] text-cream">
             До
           </span>
         </div>

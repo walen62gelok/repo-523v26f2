@@ -8,20 +8,23 @@
    только для скрипт-слова «hair» в логотипе. */
 
 :root {
-  --cream: #f5f1e9;
-  --cream-2: #efe9dd;
-  --greige: #e7e0d2;
-  --line: #d9d1c0;
-  --ink: #2b2e25;
-  --muted: #6c705f;
+  /* Тёмная оливковая тема: фон — олива/шалфей, текст — крем (как на карточках).
+     cream остаётся «светлым» (текст/светлые штрихи), olive/olive-deep — тёмные
+     поверхности, ink/muted/sage перекрашены в светлые для тёмного фона. */
+  --cream: #f4efe4;
+  --cream-2: #474e3a;
+  --greige: #5a6147;
+  --line: #6b7259;
+  --ink: #f1ece0;
+  --muted: #c1c5b2;
   --olive: #565d48;
   --olive-deep: #3d4233;
-  --sage: #7e846c;
-  --gold: #ad8f5b;
-  --gold-soft: #c8af83;
+  --sage: #b3b8a1;
+  --gold: #c8a96a;
+  --gold-soft: #d8bd88;
 
-  --background: var(--cream);
-  --foreground: var(--ink);
+  --background: var(--olive-deep);
+  --foreground: var(--cream);
 }
 
 @theme inline {
@@ -49,7 +52,7 @@
 
 @layer base {
   body {
-    background: var(--cream);
+    background: var(--olive-deep);
     color: var(--ink);
   }
   h1, h2, h3, h4 {
@@ -58,8 +61,8 @@
     font-weight: 500;
   }
   ::selection {
-    background: color-mix(in srgb, var(--gold) 35%, transparent);
-    color: var(--ink);
+    background: color-mix(in srgb, var(--gold) 45%, transparent);
+    color: var(--olive-deep);
   }
 }
 
@@ -67,8 +70,8 @@
   .input,
   .select,
   .textarea {
-    @apply w-full rounded-md border border-line bg-white/70 px-3.5 py-2.5 text-sm text-ink outline-none transition-colors;
-    @apply placeholder:text-muted/60 focus-visible:border-olive focus-visible:ring-2 focus-visible:ring-olive/25;
+    @apply w-full rounded-md border border-line bg-cream/[0.06] px-3.5 py-2.5 text-sm text-ink outline-none transition-colors;
+    @apply placeholder:text-muted/50 focus-visible:border-gold focus-visible:ring-2 focus-visible:ring-gold/25;
   }
 
   /* тонкая «золотая» линия-подчёркивание, рисуется на hover */
@@ -115,14 +118,14 @@ html {
   scroll-behavior: smooth;
 }
 
-/* лёгкая тёплая зернистость поверх кремового фона — «не цифровой» вид */
+/* лёгкая зернистость поверх оливкового фона — «не цифровой» вид */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.035;
+  opacity: 0.05;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 

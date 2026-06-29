@@ -51,8 +51,8 @@ export function Header() {
     <header
       className={`sticky top-0 z-40 border-b transition-all duration-500 ${
         scrolled
-          ? "border-line bg-cream/85 backdrop-blur-md"
-          : "border-transparent bg-cream/40 backdrop-blur-sm"
+          ? "border-line bg-olive-deep/85 backdrop-blur-md"
+          : "border-transparent bg-olive-deep/40 backdrop-blur-sm"
       }`}
     >
       <Container className="flex h-18 items-center justify-between gap-4 py-3">
@@ -72,7 +72,7 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 className={`link-underline text-sm transition-colors focus-visible:outline-none ${
-                  active ? "text-olive" : "text-muted hover:text-ink"
+                  active ? "text-gold-soft" : "text-muted hover:text-ink"
                 }`}
               >
                 {item.label}
@@ -95,7 +95,7 @@ export function Header() {
 
         <button
           type="button"
-          className="relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-olive/25 text-ink lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olive/40"
+          className="relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-cream/25 text-ink lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/40"
           aria-expanded={open}
           aria-controls="mobile-nav"
           aria-label={open ? "Закрыть меню" : "Открыть меню"}
@@ -125,7 +125,7 @@ export function Header() {
         {open ? (
           <motion.div
             id="mobile-nav"
-            className="overflow-hidden border-t border-line bg-cream lg:hidden"
+            className="overflow-hidden border-t border-line bg-olive-deep lg:hidden"
             initial={reduceMotion ? false : { height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={reduceMotion ? undefined : { height: 0, opacity: 0 }}
@@ -141,7 +141,7 @@ export function Header() {
                 >
                   <Link
                     href={item.href}
-                    className="block rounded-lg px-3 py-2.5 text-[15px] text-ink transition-colors hover:bg-olive/5"
+                    className="block rounded-lg px-3 py-2.5 text-[15px] text-ink transition-colors hover:bg-cream/5"
                   >
                     {item.label}
                   </Link>
@@ -149,7 +149,7 @@ export function Header() {
               ))}
               <a
                 href={siteConfig.phoneHref}
-                className="rounded-lg px-3 py-2.5 text-[15px] font-medium text-ink transition-colors hover:bg-olive/5"
+                className="rounded-lg px-3 py-2.5 text-[15px] font-medium text-ink transition-colors hover:bg-cream/5"
               >
                 {siteConfig.phone}
               </a>

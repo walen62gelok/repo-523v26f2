@@ -49,8 +49,8 @@ export function PortfolioGrid({ items }: { items: PortfolioItem[] }) {
                     onClick={() => filter.set(value)}
                     className={`rounded-full border px-3 py-1 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olive ${
                       active
-                        ? "border-olive bg-olive text-cream"
-                        : "border-line bg-white/60 text-ink/80 hover:bg-olive/5"
+                        ? "border-gold/60 bg-gold/20 text-cream"
+                        : "border-line bg-cream/[0.05] text-ink/80 hover:bg-cream/10"
                     }`}
                   >
                     {value}

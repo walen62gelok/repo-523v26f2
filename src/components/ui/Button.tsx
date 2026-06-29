@@ -4,15 +4,15 @@ import type { ComponentProps, ReactNode } from "react";
 type Variant = "primary" | "secondary" | "ghost" | "gold";
 
 const base =
-  "group/btn inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium tracking-wide transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olive/40 focus-visible:ring-offset-2 focus-visible:ring-offset-cream disabled:cursor-not-allowed disabled:opacity-60";
+  "group/btn inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium tracking-wide transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50 focus-visible:ring-offset-2 focus-visible:ring-offset-olive-deep disabled:cursor-not-allowed disabled:opacity-60";
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-olive text-cream shadow-sm hover:bg-olive-deep hover:shadow-md hover:-translate-y-0.5",
+    "bg-cream text-olive-deep shadow-sm hover:bg-white hover:shadow-md hover:-translate-y-0.5",
   secondary:
-    "border border-olive/30 bg-transparent text-ink hover:border-olive hover:bg-olive/5",
-  ghost: "text-ink hover:bg-olive/5",
-  gold: "bg-gold text-white shadow-sm hover:bg-gold/90 hover:-translate-y-0.5",
+    "border border-cream/30 bg-transparent text-ink hover:border-cream hover:bg-cream/5",
+  ghost: "text-ink hover:bg-cream/5",
+  gold: "bg-gold text-olive-deep shadow-sm hover:bg-gold-soft hover:-translate-y-0.5",
 };
 
 export function ButtonLink({
