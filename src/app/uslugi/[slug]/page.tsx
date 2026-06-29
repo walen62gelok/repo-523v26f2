@@ -62,9 +62,21 @@ export default async function ServiceDetailPage({
           <p className="text-ink/80">{service.description}</p>
 
           <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
-            <Placeholder label="Фото 1" ratio="aspect-square" />
-            <Placeholder label="Фото 2" ratio="aspect-square" />
-            <Placeholder label="Фото 3" ratio="aspect-square" />
+            <Placeholder
+              label={service.title}
+              src={service.src ?? "/photos/interior-arch.jpg"}
+              ratio="aspect-square"
+            />
+            <Placeholder
+              label="Интерьер салона"
+              src="/photos/interior-chairs.jpg"
+              ratio="aspect-square"
+            />
+            <Placeholder
+              label="Интерьер салона"
+              src="/photos/interior-warm.jpg"
+              ratio="aspect-square"
+            />
           </div>
 
           <section className="mt-10" aria-labelledby="faq-heading">

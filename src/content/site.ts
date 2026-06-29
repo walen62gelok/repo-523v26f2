@@ -86,6 +86,7 @@ export const services: Service[] = [
     unit: "₽ / 100 г",
     duration: "от 3 часов",
     image: "Наращивание 60 см",
+    src: "/photos/work-long.jpg",
     featured: true,
     faq: [
       {
@@ -111,6 +112,7 @@ export const services: Service[] = [
     unit: "₽ / прядь",
     duration: "от 2,5 часов",
     image: "Капсульное «бисер»",
+    src: "/photos/work-extensions.jpg",
     featured: true,
     faq: [
       {
@@ -131,6 +133,7 @@ export const services: Service[] = [
     unit: "₽ / объём",
     duration: "от 2 часов",
     image: "Невидимое наращивание",
+    src: "/photos/work-back.jpg",
     featured: true,
     faq: [
       {
@@ -151,6 +154,7 @@ export const services: Service[] = [
     unit: "₽ / прядь",
     duration: "от 2 часов",
     image: "Коррекция",
+    src: "/photos/work-dark.jpg",
     faq: [
       {
         question: "Как часто нужна коррекция?",
@@ -170,6 +174,7 @@ export const services: Service[] = [
     unit: "₽",
     duration: "от 2 часов",
     image: "Кератин",
+    src: "/photos/interior-lights.jpg",
     faq: [
       {
         question: "Сколько держится эффект?",
@@ -189,6 +194,7 @@ export const services: Service[] = [
     unit: "₽",
     duration: "от 1,5 часов",
     image: "Ботокс",
+    src: "/photos/interior-vanity.jpg",
     faq: [
       {
         question: "Чем ботокс отличается от кератина?",
@@ -208,6 +214,7 @@ export const services: Service[] = [
     unit: "₽",
     duration: "от 1,5 часов",
     image: "Окрашивание",
+    src: "/photos/work-color.jpg",
     faq: [
       {
         question: "От чего зависит цена?",
@@ -227,6 +234,7 @@ export const services: Service[] = [
     unit: "₽",
     duration: "от 1 часа",
     image: "Тонирование",
+    src: "/photos/portrait-1.jpg",
     faq: [
       {
         question: "Как часто можно тонировать?",
@@ -246,6 +254,7 @@ export const services: Service[] = [
     unit: "₽",
     duration: "от 2,5 часов",
     image: "Мелирование",
+    src: "/photos/portrait-2.jpg",
     faq: [
       {
         question: "Подходит ли мелирование для тёмных волос?",
@@ -265,6 +274,7 @@ export const services: Service[] = [
     unit: "₽",
     duration: "от 40 минут",
     image: "Женская стрижка",
+    src: "/photos/portrait-3.jpg",
     featured: true,
     faq: [
       {
@@ -283,6 +293,7 @@ export const services: Service[] = [
     unit: "₽",
     duration: "от 30 минут",
     image: "Мужская стрижка",
+    src: "/photos/master-action.jpg",
     faq: [
       {
         question: "Нужна ли предварительная запись?",
@@ -301,6 +312,7 @@ export const services: Service[] = [
     unit: "₽",
     duration: "от 1 часа",
     image: "Причёска",
+    src: "/photos/portrait-4.jpg",
     faq: [
       {
         question: "Можно ли сделать пробную причёску?",
@@ -317,6 +329,7 @@ export const masters: Master[] = [
     specialization: "Наращивание волос, основатель салона",
     experience: "опыт 10+ лет",
     photo: "Фото мастера",
+    photoSrc: "/photos/master-1.jpg",
     bio: "Специализируется на капсульном и невидимом наращивании натуральными волосами. Индивидуальный подбор техники под каждого гостя.",
   },
   {
@@ -325,6 +338,7 @@ export const masters: Master[] = [
     specialization: "Окрашивание и тонирование",
     experience: "опыт 7 лет",
     photo: "Фото мастера",
+    photoSrc: "/photos/portrait-5.jpg",
     bio: "Работает со сложным окрашиванием, мелированием и уходом за блондом.",
   },
   {
@@ -333,6 +347,7 @@ export const masters: Master[] = [
     specialization: "Уход: кератин, ботокс",
     experience: "опыт 6 лет",
     photo: "Фото мастера",
+    photoSrc: "/photos/portrait-6.jpg",
     bio: "Восстановление и выпрямление волос, подбор домашнего ухода.",
   },
   {
@@ -341,6 +356,7 @@ export const masters: Master[] = [
     specialization: "Стрижки и причёски",
     experience: "опыт 8 лет",
     photo: "Фото мастера",
+    photoSrc: "/photos/portrait-2.jpg",
     bio: "Женские и мужские стрижки, укладки и праздничные причёски.",
   },
 ];
@@ -354,6 +370,8 @@ export const portfolio: PortfolioItem[] = [
     color: "Блонд",
     before: "До",
     after: "После",
+    beforeSrc: "/photos/work-dark.jpg",
+    afterSrc: "/photos/work-long.jpg",
   },
   {
     id: "p2",
@@ -363,6 +381,8 @@ export const portfolio: PortfolioItem[] = [
     color: "Шатен",
     before: "До",
     after: "После",
+    beforeSrc: "/photos/portrait-1.jpg",
+    afterSrc: "/photos/work-back.jpg",
   },
   {
     id: "p3",
@@ -372,6 +392,8 @@ export const portfolio: PortfolioItem[] = [
     color: "Брюнет",
     before: "До",
     after: "После",
+    beforeSrc: "/photos/portrait-2.jpg",
+    afterSrc: "/photos/work-extensions.jpg",
   },
   {
     id: "p4",
@@ -381,6 +403,8 @@ export const portfolio: PortfolioItem[] = [
     color: "Рыжий",
     before: "До",
     after: "После",
+    beforeSrc: "/photos/portrait-6.jpg",
+    afterSrc: "/photos/work-color.jpg",
   },
   {
     id: "p5",
@@ -390,6 +414,8 @@ export const portfolio: PortfolioItem[] = [
     color: "Шатен",
     before: "До",
     after: "После",
+    beforeSrc: "/photos/portrait-3.jpg",
+    afterSrc: "/photos/work-long.jpg",
   },
   {
     id: "p6",
@@ -399,6 +425,8 @@ export const portfolio: PortfolioItem[] = [
     color: "Блонд",
     before: "До",
     after: "После",
+    beforeSrc: "/photos/portrait-4.jpg",
+    afterSrc: "/photos/work-back.jpg",
   },
   {
     id: "p7",
@@ -408,6 +436,8 @@ export const portfolio: PortfolioItem[] = [
     color: "Блонд",
     before: "До",
     after: "После",
+    beforeSrc: "/photos/work-dark.jpg",
+    afterSrc: "/photos/work-color.jpg",
   },
   {
     id: "p8",
@@ -417,6 +447,8 @@ export const portfolio: PortfolioItem[] = [
     color: "Брюнет",
     before: "До",
     after: "После",
+    beforeSrc: "/photos/portrait-5.jpg",
+    afterSrc: "/photos/work-extensions.jpg",
   },
 ];
 

@@ -4,11 +4,30 @@ export function Placeholder({
   label,
   className = "",
   ratio = "aspect-[4/3]",
+  src,
 }: {
   label?: string;
   className?: string;
   ratio?: string;
+  src?: string;
 }) {
+  if (src) {
+    return (
+      <div
+        className={`group relative ${ratio} w-full overflow-hidden rounded-xl bg-cream-2 ${className}`}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={src}
+          alt={label ?? ""}
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      </div>
+    );
+  }
+
   return (
     <div
       role="img"

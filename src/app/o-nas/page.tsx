@@ -35,7 +35,11 @@ export default function AboutPage() {
               <RatingBadge />
             </div>
           </div>
-          <Placeholder label="Интерьер салона" ratio="aspect-[4/3]" />
+          <Placeholder
+            label="Интерьер салона Alena Lukina"
+            src="/photos/interior-green.jpg"
+            ratio="aspect-[4/3]"
+          />
         </div>
       </Section>
 

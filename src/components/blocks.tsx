@@ -63,6 +63,7 @@ export function ServiceCard({ service }: { service: Service }) {
         <div className="overflow-hidden">
           <Placeholder
             label={service.image}
+            src={service.src}
             ratio="aspect-[3/2]"
             className="rounded-none transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
           />
@@ -93,6 +94,7 @@ export function MasterCard({ master }: { master: Master }) {
         <div className="overflow-hidden">
           <Placeholder
             label={master.photo}
+            src={master.photoSrc}
             ratio="aspect-[4/5]"
             className="rounded-none transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
           />
@@ -148,6 +150,7 @@ export function PortfolioCard({ item }: { item: PortfolioItem }) {
         <div className="relative overflow-hidden">
           <Placeholder
             label={item.before}
+            src={item.beforeSrc}
             ratio="aspect-square"
             className="rounded-none transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
           />
@@ -158,6 +161,7 @@ export function PortfolioCard({ item }: { item: PortfolioItem }) {
         <div className="relative overflow-hidden">
           <Placeholder
             label={item.after}
+            src={item.afterSrc}
             ratio="aspect-square"
             className="rounded-none transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
           />

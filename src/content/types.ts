@@ -26,6 +26,7 @@ export interface Service {
   unit: string;
   duration: string;
   image: string;
+  src?: string;
   faq: ServiceFaqItem[];
   featured?: boolean;
 }
@@ -36,6 +37,7 @@ export interface Master {
   specialization: string;
   experience: string;
   photo: string;
+  photoSrc?: string;
   bio: string;
 }
 
@@ -51,6 +53,8 @@ export interface PortfolioItem {
   color: PortfolioColor;
   before: string;
   after: string;
+  beforeSrc?: string;
+  afterSrc?: string;
 }
 
 export interface Review {

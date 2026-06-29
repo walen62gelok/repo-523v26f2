@@ -30,7 +30,8 @@ export function HeroVisual() {
       >
         <motion.div style={reduceMotion ? undefined : { scale, y }}>
           <Placeholder
-            label="Интерьер салона"
+            label="Интерьер салона Alena Lukina"
+            src="/photos/hero-interior.jpg"
             ratio="aspect-[4/5]"
             className="rounded-none"
           />
